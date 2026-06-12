@@ -110,9 +110,11 @@
     "status": "Available",
     "badge": "Last Unit",
     "featured": true,
-    "car_of_month": false,
+    "car_of_month": true,
     "images": [
-      "/assets/images/cars/xiaomi-yu7.jpg"
+      "https://res.cloudinary.com/da7jzmy2g/image/upload/v1778957590/GLE450-3_ofvds0.jpg",
+      "https://res.cloudinary.com/da7jzmy2g/image/upload/v1778957589/GLE450-7_smgufn.jpg",
+      "https://res.cloudinary.com/da7jzmy2g/image/upload/v1778956322/GLC300-6_ha4be0.jpg"
     ],
     "description": "Only 2 units in the country. The Xiaomi YU7 Ultra redefines electric luxury with 800V architecture, 800km range, and intelligent driving systems that learn you.",
     "features": [
@@ -131,7 +133,7 @@
       "top_speed": "253 km/h",
       "range": "800 km"
     },
-    "views": 0,
+    "views": 3,
     "enquiries": 0,
     "date_added": "2025-01-15T00:00:00.000Z"
   },
