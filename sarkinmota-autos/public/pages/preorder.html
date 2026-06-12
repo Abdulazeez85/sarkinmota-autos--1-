@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Order / VIP Concierge — Sarkinmota Autos</title>
+  <link rel="stylesheet" href="/css/root.css"><link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+<div class="page-loader"><div class="loader-logo">SARKINMOTA</div><div class="loader-bar"><div class="loader-bar-fill"></div></div><div class="loader-text">Loading...</div></div>
+<nav class="navbar" id="navbar"><div class="container"><div class="navbar-inner"><a href="/" class="navbar-logo"><img src="/assets/images/logo/logo-dark.png" alt="" style="height:40px"><div class="navbar-logo-text"><span class="navbar-logo-main">Sarkinmota</span><span class="navbar-logo-sub">Autos</span></div></a><nav class="navbar-nav"><a href="/" class="nav-link">Home</a><a href="/pages/inventory.html" class="nav-link">Inventory</a><a href="/pages/preorder.html" class="nav-link active">Pre-Order</a><a href="/pages/contact.html" class="nav-link">Contact</a></nav><div class="navbar-actions"><button class="theme-toggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button></div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div></div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/" class="mobile-nav-link">Home</a><a href="/pages/inventory.html" class="mobile-nav-link">Inventory</a><a href="/pages/preorder.html" class="mobile-nav-link">Pre-Order</a><div class="mobile-menu-actions"><a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp btn-lg">WhatsApp Us</a><button class="btn btn-outline btn-lg theme-toggle">Theme</button></div></div>
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">›</span><span>Pre-Order</span></div><h1 class="page-hero-title">VIP <span>Concierge</span></h1><p class="page-hero-sub">Can't find your dream car? Tell us exactly what you want — we source it worldwide.</p></div></section>
+<section class="section"><div class="container"><div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-12);align-items:start" class="reveal">
+  <div>
+    <span class="section-eyebrow">👑 Worldwide Sourcing</span>
+    <h2 class="section-title" style="text-align:left;font-size:var(--text-4xl);margin-bottom:var(--space-6)">We Find Any Car, <span>Anywhere</span></h2>
+    <p style="color:var(--text-secondary);line-height:1.9;margin-bottom:var(--space-6)">From Japan, UK, USA, UAE, Germany — wherever your dream car exists, Sarkinmota Autos will source it, import it, clear it through customs, and deliver it to your door in Nigeria.</p>
+    <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+      <div style="display:flex;gap:var(--space-4);align-items:flex-start;padding:var(--space-4);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md)"><span style="font-size:24px">🌍</span><div><div style="font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-sm);margin-bottom:4px">Global Network</div><div style="font-size:var(--text-sm);color:var(--text-secondary)">Access to dealers in Japan, UK, USA, UAE, Germany and more.</div></div></div>
+      <div style="display:flex;gap:var(--space-4);align-items:flex-start;padding:var(--space-4);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md)"><span style="font-size:24px">🛃</span><div><div style="font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-sm);margin-bottom:4px">Full Customs Clearance</div><div style="font-size:var(--text-sm);color:var(--text-secondary)">Our specialist broker network handles all import duties and documentation.</div></div></div>
+      <div style="display:flex;gap:var(--space-4);align-items:flex-start;padding:var(--space-4);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md)"><span style="font-size:24px">🚚</span><div><div style="font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-sm);margin-bottom:4px">Doorstep Delivery</div><div style="font-size:var(--text-sm);color:var(--text-secondary)">From the source country to your doorstep anywhere in Nigeria.</div></div></div>
+    </div>
+  </div>
+  <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--space-8)">
+    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;text-transform:uppercase;margin-bottom:var(--space-6)">Submit Your Request</h3>
+    <form id="preorderForm" style="display:flex;flex-direction:column;gap:var(--space-5)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+        <div class="form-group"><label class="form-label">Full Name *</label><input type="text" class="form-input" id="poName" required placeholder="Your name"></div>
+        <div class="form-group"><label class="form-label">Phone *</label><input type="tel" class="form-input" id="poPhone" required placeholder="08XXXXXXXXX"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="poEmail" placeholder="your@email.com"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+        <div class="form-group"><label class="form-label">Car Brand *</label><input type="text" class="form-input" id="poBrand" required placeholder="e.g. Rolls-Royce"></div>
+        <div class="form-group"><label class="form-label">Model</label><input type="text" class="form-input" id="poCar" placeholder="e.g. Cullinan Black Badge"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Budget Range</label>
+        <select class="form-select" id="poBudget">
+          <option>₦50M – ₦100M</option><option>₦100M – ₦200M</option><option>₦200M – ₦500M</option><option>₦500M+</option><option>Flexible</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Ready to Pay Deposit?</label>
+        <select class="form-select" id="poDeposit">
+          <option>Yes, 40% immediately</option><option>Yes, within 1 week</option><option>Within 1 month</option><option>Just exploring</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Additional Notes</label><textarea class="form-textarea" id="poNotes" placeholder="Year, colour, trim, specifications..."></textarea></div>
+      <button type="submit" class="btn btn-primary btn-full btn-lg">Submit VIP Request</button>
+    </form>
+  </div>
+</div></div></section>
+<a href="https://wa.me/2347015136111" class="whatsapp-fab" target="_blank" rel="noopener"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.544 4.124 1.5 5.867L0 24l6.317-1.473A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.741.872.937-3.628-.234-.373A9.783 9.783 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818S21.818 6.579 21.818 12c0 5.421-4.397 9.818-9.818 9.818z"/></svg></a>
+<script src="/js/theme.js"></script><script src="/js/utils.js"></script><script src="/js/wishlist.js"></script><script src="/js/currency.js"></script><script src="/js/navbar.js"></script><script src="/js/whatsapp.js"></script><script src="/js/animations.js"></script><script src="/js/pages/preorder.js"></script>
+</body></html>

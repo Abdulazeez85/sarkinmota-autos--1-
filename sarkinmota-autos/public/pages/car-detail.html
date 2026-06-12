@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Details — Sarkinmota Autos</title>
+  <link rel="stylesheet" href="/css/root.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .detail-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-12); align-items: start; padding: var(--space-12) 0; }
+    .gallery { position: sticky; top: 100px; }
+    .gallery-main { aspect-ratio: 16/10; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; margin-bottom: var(--space-3); cursor: zoom-in; }
+    .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .gallery-main:hover img { transform: scale(1.03); }
+    .gallery-thumbs { display: flex; gap: var(--space-2); overflow-x: auto; padding-bottom: var(--space-2); }
+    .gallery-thumb { width: 80px; height: 56px; flex-shrink: 0; background: var(--bg-card); border: 2px solid var(--border-color); border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; transition: border-color var(--ease-fast); }
+    .gallery-thumb:hover, .gallery-thumb.active { border-color: var(--gold-mid); }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .detail-header { margin-bottom: var(--space-6); }
+    .detail-brand { font-family: var(--font-display); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-gold); margin-bottom: var(--space-2); }
+    .detail-name { font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl)); font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.05; margin-bottom: var(--space-4); }
+    .detail-badges { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-5); }
+    .detail-price-block { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-5); margin-bottom: var(--space-6); }
+    .detail-price-label { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--space-2); }
+    .detail-price-ngn { font-family: var(--font-display); font-size: var(--text-4xl); font-weight: 900; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; }
+    .detail-price-usd { font-size: var(--text-base); color: var(--text-muted); margin-top: var(--space-1); }
+    .detail-meta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-bottom: var(--space-6); }
+    .detail-meta-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: var(--space-3) var(--space-4); }
+    .detail-meta-label { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .detail-meta-val { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--text-primary); }
+    .detail-actions { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-6); }
+    .detail-actions-row { display: flex; gap: var(--space-3); }
+    .detail-actions-row .btn { flex: 1; }
+    .detail-tabs { border-bottom: 1px solid var(--border-color); display: flex; gap: var(--space-1); margin-bottom: var(--space-8); }
+    .detail-tab { font-family: var(--font-display); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: var(--space-3) var(--space-4); color: var(--text-muted); border-bottom: 2px solid transparent; cursor: pointer; transition: all var(--ease-fast); margin-bottom: -1px; }
+    .detail-tab:hover { color: var(--text-secondary); }
+    .detail-tab.active { color: var(--text-gold); border-bottom-color: var(--gold-mid); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .specs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+    .spec-row { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid var(--divider); }
+    .spec-key { font-size: var(--text-sm); color: var(--text-secondary); }
+    .spec-val { font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: var(--text-primary); }
+    .features-list { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .feature-tag { display: inline-flex; align-items: center; gap: var(--space-2); background: rgba(201,168,76,0.08); border: 1px solid var(--border-color); color: var(--text-secondary); padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); font-size: var(--text-sm); }
+    .feature-tag::before { content: '✓'; color: var(--gold-mid); }
+    .enquiry-block { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-6); }
+    .enquiry-title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-5); }
+    @media (max-width: 1024px) { .detail-grid { grid-template-columns: 1fr; } .gallery { position: static; } }
+    @media (max-width: 768px) { .detail-meta-grid { grid-template-columns: 1fr; } .detail-actions-row { flex-direction: column; } }
+  </style>
+</head>
+<body>
+<div class="page-loader"><div class="loader-logo">SARKINMOTA</div><div class="loader-bar"><div class="loader-bar-fill"></div></div><div class="loader-text">Loading vehicle...</div></div>
+
+<nav class="navbar" id="navbar">
+  <div class="container"><div class="navbar-inner">
+    <a href="/" class="navbar-logo"><img src="/assets/images/logo/logo-dark.png" alt="Sarkinmota Autos" style="height:40px"><div class="navbar-logo-text"><span class="navbar-logo-main">Sarkinmota</span><span class="navbar-logo-sub">Autos</span></div></a>
+    <nav class="navbar-nav">
+      <a href="/" class="nav-link">Home</a><a href="/pages/inventory.html" class="nav-link">Inventory</a>
+      <a href="/pages/booking.html" class="nav-link">Test Drive</a><a href="/pages/calculator.html" class="nav-link">Calculator</a>
+      <a href="/pages/compare.html" class="nav-link">Compare</a><a href="/pages/contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="navbar-actions">
+      <button class="theme-toggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button>
+      <button class="navbar-icon-btn" onclick="window.location.href='/pages/wishlist.html'">🤍<span class="navbar-badge wishlist-count" style="display:none">0</span></button>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="mobile-nav-link">Home</a><a href="/pages/inventory.html" class="mobile-nav-link">Inventory</a>
+  <a href="/pages/booking.html" class="mobile-nav-link">Test Drive</a><a href="/pages/contact.html" class="mobile-nav-link">Contact</a>
+  <div class="mobile-menu-actions"><a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp btn-lg">WhatsApp Us</a><button class="btn btn-outline btn-lg theme-toggle">Theme</button></div>
+</div>
+
+<div style="padding-top:80px; background:var(--bg-secondary); border-bottom:1px solid var(--border-color)">
+  <div class="container" style="padding-top:var(--space-5); padding-bottom:var(--space-5)">
+    <div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">›</span><a href="/pages/inventory.html">Inventory</a><span class="breadcrumb-sep">›</span><span id="breadcrumbCar">Vehicle</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="detail-grid" id="detailContent">
+      <!-- Skeleton -->
+      <div class="gallery">
+        <div class="gallery-main skeleton" style="aspect-ratio:16/10"></div>
+        <div class="gallery-thumbs"><div class="skeleton" style="width:80px;height:56px;flex-shrink:0"></div><div class="skeleton" style="width:80px;height:56px;flex-shrink:0"></div></div>
+      </div>
+      <div>
+        <div class="skeleton" style="height:14px;width:30%;margin-bottom:12px"></div>
+        <div class="skeleton" style="height:48px;width:80%;margin-bottom:20px"></div>
+        <div class="skeleton" style="height:100px;margin-bottom:20px"></div>
+        <div class="skeleton" style="height:60px;margin-bottom:12px"></div>
+        <div class="skeleton" style="height:48px;margin-bottom:12px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/2347015136111" class="whatsapp-fab" target="_blank" rel="noopener">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.544 4.124 1.5 5.867L0 24l6.317-1.473A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.741.872.937-3.628-.234-.373A9.783 9.783 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818S21.818 6.579 21.818 12c0 5.421-4.397 9.818-9.818 9.818z"/></svg>
+</a>
+
+<script src="/js/theme.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/wishlist.js"></script>
+<script src="/js/currency.js"></script>
+<script src="/js/navbar.js"></script>
+<script src="/js/whatsapp.js"></script>
+<script src="/js/animations.js"></script>
+<script src="/js/pages/car-detail.js"></script>
+</body>
+</html>

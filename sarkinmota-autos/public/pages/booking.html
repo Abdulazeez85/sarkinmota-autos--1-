@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Test Drive — Sarkinmota Autos</title>
+  <link rel="stylesheet" href="/css/root.css"><link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
+    .booking-info { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-8); }
+    .info-step { display: flex; gap: var(--space-4); padding: var(--space-5) 0; border-bottom: 1px solid var(--divider); }
+    .info-step:last-child { border-bottom: none; }
+    .step-num { width: 40px; height: 40px; background: var(--gold-gradient); color: #000; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 900; font-size: var(--text-lg); flex-shrink: 0; }
+    .step-title { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-1); }
+    .step-desc { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; }
+    .booking-form-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-8); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+    @media (max-width: 1024px) { .booking-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page-loader"><div class="loader-logo">SARKINMOTA</div><div class="loader-bar"><div class="loader-bar-fill"></div></div><div class="loader-text">Loading booking form...</div></div>
+<nav class="navbar" id="navbar">
+  <div class="container"><div class="navbar-inner">
+    <a href="/" class="navbar-logo"><img src="/assets/images/logo/logo-dark.png" alt="Sarkinmota Autos" style="height:40px"><div class="navbar-logo-text"><span class="navbar-logo-main">Sarkinmota</span><span class="navbar-logo-sub">Autos</span></div></a>
+    <nav class="navbar-nav"><a href="/" class="nav-link">Home</a><a href="/pages/inventory.html" class="nav-link">Inventory</a><a href="/pages/booking.html" class="nav-link active">Test Drive</a><a href="/pages/calculator.html" class="nav-link">Calculator</a><a href="/pages/contact.html" class="nav-link">Contact</a></nav>
+    <div class="navbar-actions"><button class="theme-toggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button></div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/" class="mobile-nav-link">Home</a><a href="/pages/inventory.html" class="mobile-nav-link">Inventory</a><a href="/pages/booking.html" class="mobile-nav-link">Test Drive</a><div class="mobile-menu-actions"><a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp btn-lg">WhatsApp Us</a><button class="btn btn-outline btn-lg theme-toggle">Theme</button></div></div>
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">›</span><span>Book Test Drive</span></div><h1 class="page-hero-title">Book a <span>Test Drive</span></h1><p class="page-hero-sub">Experience your dream car in person. Book a test drive at our Abuja showroom.</p></div></section>
+<section class="section"><div class="container">
+  <div class="booking-grid">
+    <div class="booking-info reveal-left">
+      <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:800;text-transform:uppercase;margin-bottom:var(--space-6)">How It <span style="background:var(--gold-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Works</span></h2>
+      <div class="info-step"><div class="step-num">1</div><div><div class="step-title">Fill the Form</div><div class="step-desc">Select your desired vehicle, preferred date and time, and enter your contact details.</div></div></div>
+      <div class="info-step"><div class="step-num">2</div><div><div class="step-title">Get Confirmed</div><div class="step-desc">Our team will contact you within 2 hours to confirm your booking and provide showroom directions.</div></div></div>
+      <div class="info-step"><div class="step-num">3</div><div><div class="step-title">Visit & Drive</div><div class="step-desc">Arrive at our Abuja showroom and experience your vehicle firsthand. No pressure, just pure luxury.</div></div></div>
+      <div class="info-step"><div class="step-num">4</div><div><div class="step-title">Make Your Decision</div><div class="step-desc">If you love it, we handle everything from payment to delivery. If not, no problem — my bratha!</div></div></div>
+      <div style="margin-top:var(--space-6);padding:var(--space-5);background:var(--bg-secondary);border-radius:var(--radius-md);border:1px solid var(--border-color)">
+        <div style="font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;text-transform:uppercase;margin-bottom:var(--space-3)">📍 Showroom Location</div>
+        <p style="font-size:var(--text-sm);color:var(--text-secondary)">Olusegun Obasanjo Way, beside NNPC Mega Gas Station, Central Business District, Abuja</p>
+        <div style="margin-top:var(--space-3);font-size:var(--text-sm);color:var(--text-secondary)">⏰ Mon–Sat: 9:00 AM – 6:00 PM</div>
+        <div style="margin-top:var(--space-4)"><a href="https://wa.me/2347015136111?text=I'd+like+to+book+a+test+drive" target="_blank" class="btn btn-whatsapp btn-sm">WhatsApp to Book Instead</a></div>
+      </div>
+    </div>
+    <div class="booking-form-card reveal-right">
+      <h3 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:var(--space-6)">Book Your Test Drive</h3>
+      <form id="bookingForm" style="display:flex;flex-direction:column;gap:var(--space-5)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Full Name *</label><input type="text" class="form-input" id="bkName" placeholder="Your full name" required></div>
+          <div class="form-group"><label class="form-label">Phone / WhatsApp *</label><input type="tel" class="form-input" id="bkPhone" placeholder="08XXXXXXXXX" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="bkEmail" placeholder="your@email.com"></div>
+        <div class="form-group"><label class="form-label">Vehicle *</label><select class="form-select" id="bkCar" required><option value="">— Select a vehicle —</option></select></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Preferred Date *</label><input type="date" class="form-input" id="bkDate" required></div>
+          <div class="form-group"><label class="form-label">Preferred Time</label>
+            <select class="form-select" id="bkTime">
+              <option value="09:00 AM">09:00 AM</option><option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option><option value="12:00 PM">12:00 PM</option>
+              <option value="01:00 PM">01:00 PM</option><option value="02:00 PM">02:00 PM</option>
+              <option value="03:00 PM">03:00 PM</option><option value="04:00 PM">04:00 PM</option>
+              <option value="05:00 PM">05:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label">Additional Notes</label><textarea class="form-textarea" id="bkMessage" placeholder="Any special requests or questions?"></textarea></div>
+        <button type="submit" class="btn btn-primary btn-full btn-lg">Confirm Test Drive Booking</button>
+        <p style="font-size:var(--text-xs);color:var(--text-muted);text-align:center">We will contact you within 2 hours to confirm.</p>
+      </form>
+    </div>
+  </div>
+</div></section>
+<a href="https://wa.me/2347015136111" class="whatsapp-fab" target="_blank" rel="noopener"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.544 4.124 1.5 5.867L0 24l6.317-1.473A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.741.872.937-3.628-.234-.373A9.783 9.783 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818S21.818 6.579 21.818 12c0 5.421-4.397 9.818-9.818 9.818z"/></svg></a>
+<script src="/js/theme.js"></script><script src="/js/utils.js"></script><script src="/js/wishlist.js"></script><script src="/js/currency.js"></script><script src="/js/navbar.js"></script><script src="/js/whatsapp.js"></script><script src="/js/animations.js"></script><script src="/js/pages/booking.js"></script>
+</body></html>

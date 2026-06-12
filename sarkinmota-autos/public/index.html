@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sarkinmota Autos — Nigeria's premier luxury car dealership. Executive vehicles, exotic cars, armoured transport. Nationwide delivery.">
+  <meta name="keywords" content="luxury cars nigeria, exotic cars abuja, sarkinmota, premium cars, range rover, mercedes, BMW abuja">
+  <meta property="og:title" content="Sarkinmota Autos — King of Cars Nigeria">
+  <meta property="og:description" content="Nigeria's most trusted luxury car dealership. Shop online or visit our Abuja showroom.">
+  <meta property="og:type" content="website">
+  <title>Sarkinmota Autos — King of Cars Nigeria</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/root.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/hero.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+
+  <style>
+    /* ===== HOMEPAGE SPECIFIC ===== */
+
+    /* Categories */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+    .category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-6) var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      cursor: pointer;
+      transition: all var(--ease-slow);
+      text-decoration: none;
+      color: inherit;
+    }
+    .category-card:hover {
+      border-color: var(--border-active);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+    .category-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      transition: all var(--ease-fast);
+    }
+    .category-card:hover .category-icon {
+      background: rgba(201, 168, 76, 0.15);
+      border-color: var(--border-active);
+    }
+    .category-name {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .category-count {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Car of Month */
+    .cotm-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .cotm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+    .cotm-image-wrap {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .cotm-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cotm-image-badge {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      background: var(--gold-gradient);
+      color: #000;
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-sm);
+    }
+    .cotm-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-gold);
+      margin-bottom: var(--space-3);
+    }
+    .cotm-name {
+      font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      margin-bottom: var(--space-4);
+    }
+    .cotm-desc {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+    .cotm-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      padding: var(--space-5);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+    .cotm-spec-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .cotm-spec-val {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .cotm-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+    /* Hall of Fame */
+    .hof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+    .hof-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+    .hof-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(30%);
+      transition: all 0.5s ease;
+    }
+    .hof-card:hover img { filter: grayscale(0%); transform: scale(1.04); }
+    .hof-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+    }
+    .hof-info {
+      position: absolute;
+      bottom: var(--space-4);
+      left: var(--space-4);
+      right: var(--space-4);
+    }
+    .hof-car-name {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .hof-sold-tag {
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-mid);
+    }
+
+    /* VIP Concierge */
+    .vip-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+      padding: var(--space-24) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .vip-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .vip-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .vip-crown { font-size: 56px; margin-bottom: var(--space-5); display: block; }
+    .vip-title {
+      font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: var(--space-5);
+    }
+    .vip-text { color: var(--text-secondary); font-size: var(--text-lg); line-height: 1.8; margin-bottom: var(--space-8); }
+    .vip-actions { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; }
+
+    /* Installment teaser */
+    .installment-banner {
+      background: var(--gold-gradient);
+      padding: var(--space-8) 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .installment-banner::before {
+      content: 'MY BRATHA';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 120px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: rgba(0,0,0,0.07);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .installment-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+    }
+    .installment-text { color: #000; }
+    .installment-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: var(--space-2);
+    }
+    .installment-headline {
+      font-family: var(--font-display);
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+    .installment-sub { font-size: var(--text-base); opacity: 0.8; margin-top: var(--space-2); }
+
+    /* Press section */
+    .press-section { padding: var(--space-12) 0; border-bottom: 1px solid var(--divider); }
+    .press-label {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-8);
+    }
+
+    /* Map section */
+    .map-section { background: var(--bg-secondary); border-top: 1px solid var(--border-color); }
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 0;
+      min-height: 450px;
+    }
+    .map-info {
+      padding: var(--space-12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .map-frame { border: none; width: 100%; height: 100%; min-height: 400px; }
+
+    /* Newsletter */
+    .newsletter-section {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border-color);
+      padding: var(--space-16) 0;
+    }
+    .newsletter-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    .newsletter-form .form-input { flex: 1; }
+
+    /* Cars grid */
+    .cars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+    }
+
+    /* Referral strip */
+    .referral-strip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-6) var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+      margin-top: var(--space-6);
+    }
+    .referral-text h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-1);
+    }
+    .referral-text p { font-size: var(--text-sm); color: var(--text-secondary); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .cars-grid { grid-template-columns: repeat(3, 1fr); }
+      .cotm-grid { gap: var(--space-8); }
+      .hof-grid { grid-template-columns: repeat(2, 1fr); }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .cars-grid { grid-template-columns: repeat(2, 1fr); }
+      .cotm-grid { grid-template-columns: 1fr; }
+      .cotm-specs { grid-template-columns: repeat(2, 1fr); }
+      .categories-grid { grid-template-columns: 1fr; }
+      .hof-grid { grid-template-columns: repeat(2, 1fr); }
+      .map-grid { grid-template-columns: 1fr; }
+      .map-info { padding: var(--space-8) var(--container-pad); }
+      .newsletter-form { flex-direction: column; }
+      .installment-inner { flex-direction: column; gap: var(--space-5); }
+      .referral-strip { flex-direction: column; text-align: center; }
+      .vip-actions { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .cars-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader">
+  <div class="loader-logo">SARKINMOTA</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  <div class="loader-text">Loading the finest cars...</div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="/" class="navbar-logo">
+        <img src="/assets/images/logo/logo-dark.png" alt="Sarkinmota Autos Logo" class="logo-dark-img">
+        <img src="/assets/images/logo/logo-light.png" alt="Sarkinmota Autos Logo" class="logo-light-img" style="display:none">
+        <div class="navbar-logo-text">
+          <span class="navbar-logo-main">Sarkinmota</span>
+          <span class="navbar-logo-sub">Autos</span>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/pages/inventory.html" class="nav-link">Inventory</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Services ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="/pages/booking.html" class="nav-dropdown-item"><span class="nav-dropdown-icon">🚗</span> Test Drive</a>
+            <a href="/pages/preorder.html" class="nav-dropdown-item"><span class="nav-dropdown-icon">📦</span> Pre-Order</a>
+            <a href="/pages/sell-swap.html" class="nav-dropdown-item"><span class="nav-dropdown-icon">🔄</span> Sell / Swap</a>
+            <a href="/pages/calculator.html" class="nav-dropdown-item"><span class="nav-dropdown-icon">💰</span> Loan Calculator</a>
+            <a href="/pages/installment-plans.html" class="nav-dropdown-item"><span class="nav-dropdown-icon">📋</span> Installment Plans</a>
+            <a href="/pages/brokers.html" class="nav-dropdown-item"><span class="nav-dropdown-icon">🤝</span> Brokers Network</a>
+          </div>
+        </div>
+        <a href="/pages/compare.html" class="nav-link">Compare</a>
+        <a href="/pages/news.html" class="nav-link">News</a>
+        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/pages/contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="navbar-actions">
+        <button class="theme-toggle" title="Toggle theme">
+          <span class="icon-moon">🌙</span>
+          <span class="icon-sun">☀️</span>
+        </button>
+        <button class="navbar-icon-btn" onclick="window.location.href='/pages/compare.html'" title="Compare cars">
+          ⚖️
+          <span class="navbar-badge compare-count" style="display:none">0</span>
+        </button>
+        <button class="navbar-icon-btn" onclick="window.location.href='/pages/wishlist.html'" title="My Wishlist">
+          🤍
+          <span class="navbar-badge wishlist-count" style="display:none">0</span>
+        </button>
+        <button class="btn btn-primary btn-sm" onclick="window.location.href='/pages/inventory.html'">Browse Cars</button>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="mobile-nav-link">Home</a>
+  <a href="/pages/inventory.html" class="mobile-nav-link">Inventory</a>
+  <a href="/pages/booking.html" class="mobile-nav-link">Test Drive</a>
+  <a href="/pages/preorder.html" class="mobile-nav-link">Pre-Order</a>
+  <a href="/pages/sell-swap.html" class="mobile-nav-link">Sell / Swap</a>
+  <a href="/pages/calculator.html" class="mobile-nav-link">Loan Calculator</a>
+  <a href="/pages/compare.html" class="mobile-nav-link">Compare Cars</a>
+  <a href="/pages/news.html" class="mobile-nav-link">News</a>
+  <a href="/pages/about.html" class="mobile-nav-link">About</a>
+  <a href="/pages/contact.html" class="mobile-nav-link">Contact</a>
+  <div class="mobile-menu-actions">
+    <a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp btn-lg">WhatsApp Us</a>
+    <button class="btn btn-outline btn-lg theme-toggle">Toggle Theme</button>
+  </div>
+</div>
+
+<!-- Social Ticker -->
+<div class="social-ticker" style="position:fixed; top:0; left:0; right:0; z-index:999; display:none" id="socialTicker">
+  <div class="ticker-track"></div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="/assets/images/hero/hero-main.jpg" alt="Luxury Cars" class="hero-bg-image" id="heroBgImg">
+    <div class="hero-bg-gradient"></div>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-speed-lines">
+    <div class="hero-speed-line"></div>
+    <div class="hero-speed-line"></div>
+    <div class="hero-speed-line"></div>
+    <div class="hero-speed-line"></div>
+    <div class="hero-speed-line"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">Nigeria's King of Cars</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-gold">Every Car</span>
+        <span>Has A</span>
+        <span class="hero-title-outline">Story</span>
+      </h1>
+      <p class="hero-subtitle">
+        From executive sedans to bulletproof convoys — Sarkinmota Autos delivers world-class luxury to your doorstep, anywhere in Nigeria.
+      </p>
+      <div class="hero-actions">
+        <a href="/pages/inventory.html" class="btn btn-primary btn-xl">Browse Inventory</a>
+        <a href="/pages/booking.html" class="btn btn-outline btn-xl">Book Test Drive</a>
+        <a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp btn-xl">WhatsApp Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number count-up" data-target="500" data-suffix="+">0</div>
+          <div class="hero-stat-label">Cars Delivered</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number count-up" data-target="40" data-suffix="+">0</div>
+          <div class="hero-stat-label">Premium Brands</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number count-up" data-target="5" data-suffix="">0</div>
+          <div class="hero-stat-label">Years Excellence</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number count-up" data-target="98" data-suffix="%">0</div>
+          <div class="hero-stat-label">Happy Clients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- Social Proof Ticker (below hero) -->
+<div class="social-ticker">
+  <div class="ticker-track"></div>
+</div>
+
+<!-- ===== CATEGORIES ===== -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">What We Offer</span>
+      <h2 class="section-title">Shop By <span>Category</span></h2>
+    </div>
+    <div class="categories-grid stagger-children" id="categoriesGrid">
+      <a href="/pages/inventory.html?type=Executive" class="category-card">
+        <div class="category-icon">🎩</div>
+        <div>
+          <div class="category-name">Executive Class</div>
+          <div class="category-count" data-category="Executive">Loading...</div>
+        </div>
+      </a>
+      <a href="/pages/inventory.html?type=SUV" class="category-card">
+        <div class="category-icon">🏔️</div>
+        <div>
+          <div class="category-name">Premium SUVs</div>
+          <div class="category-count" data-category="SUV">Loading...</div>
+        </div>
+      </a>
+      <a href="/pages/inventory.html?type=Sport" class="category-card">
+        <div class="category-icon">🏎️</div>
+        <div>
+          <div class="category-name">Sport & Performance</div>
+          <div class="category-count" data-category="Sport">Loading...</div>
+        </div>
+      </a>
+      <a href="/pages/inventory.html?type=Electric" class="category-card">
+        <div class="category-icon">⚡</div>
+        <div>
+          <div class="category-name">Electric Vehicles</div>
+          <div class="category-count" data-category="Electric">Loading...</div>
+        </div>
+      </a>
+      <a href="/pages/inventory.html?type=Executive Bus" class="category-card">
+        <div class="category-icon">🛡️</div>
+        <div>
+          <div class="category-name">Executive Buses</div>
+          <div class="category-count" data-category="Executive Bus">Loading...</div>
+        </div>
+      </a>
+      <a href="/pages/inventory.html" class="category-card">
+        <div class="category-icon">🚗</div>
+        <div>
+          <div class="category-name">All Vehicles</div>
+          <div class="category-count" id="totalCarsCount">Loading...</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED CARS ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Fresh Arrivals</span>
+      <h2 class="section-title">Featured <span>Inventory</span></h2>
+      <p class="section-subtitle">Handpicked for exclusivity. Every car fully verified, duty paid, and ready for delivery.</p>
+    </div>
+    <div class="gold-divider reveal"><div class="gold-divider-dot"></div></div>
+
+    <!-- Currency toggle -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--space-6);">
+      <p class="reveal" style="color:var(--text-secondary); font-size:var(--text-sm);">Showing <strong id="featuredCount">—</strong> featured vehicles</p>
+      <button class="btn btn-ghost btn-sm" data-currency-toggle>₦ NGN</button>
+    </div>
+
+    <div class="cars-grid stagger-children" id="featuredGrid">
+      <!-- Skeleton loaders -->
+      <div class="car-card"><div class="skeleton" style="aspect-ratio:16/10"></div><div style="padding:var(--space-5)"><div class="skeleton" style="height:12px;width:40%;margin-bottom:8px"></div><div class="skeleton" style="height:20px;width:70%;margin-bottom:16px"></div><div class="skeleton" style="height:14px;width:90%"></div></div></div>
+      <div class="car-card"><div class="skeleton" style="aspect-ratio:16/10"></div><div style="padding:var(--space-5)"><div class="skeleton" style="height:12px;width:40%;margin-bottom:8px"></div><div class="skeleton" style="height:20px;width:70%;margin-bottom:16px"></div><div class="skeleton" style="height:14px;width:90%"></div></div></div>
+      <div class="car-card"><div class="skeleton" style="aspect-ratio:16/10"></div><div style="padding:var(--space-5)"><div class="skeleton" style="height:12px;width:40%;margin-bottom:8px"></div><div class="skeleton" style="height:20px;width:70%;margin-bottom:16px"></div><div class="skeleton" style="height:14px;width:90%"></div></div></div>
+      <div class="car-card"><div class="skeleton" style="aspect-ratio:16/10"></div><div style="padding:var(--space-5)"><div class="skeleton" style="height:12px;width:40%;margin-bottom:8px"></div><div class="skeleton" style="height:20px;width:70%;margin-bottom:16px"></div><div class="skeleton" style="height:14px;width:90%"></div></div></div>
+    </div>
+
+    <div style="text-align:center; margin-top:var(--space-10)">
+      <a href="/pages/inventory.html" class="btn btn-outline btn-lg">View Full Inventory</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CAR OF THE MONTH ===== -->
+<section class="cotm-section section" id="cotmSection">
+  <div class="container">
+    <div class="cotm-grid">
+      <div class="cotm-image-wrap reveal-left" id="cotmImageWrap">
+        <img src="/assets/images/cars/placeholder.jpg" alt="Car of the Month" id="cotmImage">
+        <div class="cotm-image-badge">Car of the Month</div>
+      </div>
+      <div class="reveal-right" id="cotmContent">
+        <div class="cotm-label">⭐ Star of the Showroom</div>
+        <h2 class="cotm-name" id="cotmName">Loading...</h2>
+        <p class="cotm-desc" id="cotmDesc">Loading vehicle details...</p>
+        <div class="cotm-specs" id="cotmSpecs"></div>
+        <div class="cotm-actions">
+          <a href="#" class="btn btn-primary btn-lg" id="cotmDetailBtn">View Full Details</a>
+          <a href="#" class="btn btn-whatsapp btn-lg" id="cotmWABtn">Enquire on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTALLMENT BANNER ===== -->
+<div class="installment-banner">
+  <div class="container">
+    <div class="installment-inner">
+      <div class="installment-text">
+        <div class="installment-label">Flexible Payment Plans</div>
+        <div class="installment-headline">Own Your Dream Car<br>From Just 40% Deposit</div>
+        <div class="installment-sub">Spread the balance over 12–60 months. No hidden charges. My Bratha.</div>
+      </div>
+      <div style="display:flex; gap:var(--space-4); flex-wrap:wrap">
+        <a href="/pages/calculator.html" class="btn btn-dark btn-lg">Calculate Payments</a>
+        <a href="/pages/installment-plans.html" class="btn btn-dark btn-lg">View Plans</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIP CONCIERGE ===== -->
+<section class="vip-section">
+  <div class="vip-bg"></div>
+  <div class="container">
+    <div class="vip-content reveal">
+      <span class="vip-crown">👑</span>
+      <h2 class="vip-title">Can't Find Your <span style="background:var(--gold-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Dream Car?</span></h2>
+      <p class="vip-text">Our VIP Concierge team sources any vehicle worldwide. Tell us exactly what you want — brand, model, spec, colour — and we handle everything from import to delivery at your doorstep.</p>
+      <div class="vip-actions">
+        <a href="/pages/preorder.html" class="btn btn-primary btn-xl">Submit VIP Request</a>
+        <a href="https://wa.me/2347015136111?text=Hello%2C+I%27d+like+to+make+a+VIP+Concierge+request." target="_blank" class="btn btn-outline btn-xl">WhatsApp Concierge</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HALL OF FAME ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Recently Sold</span>
+      <h2 class="section-title">Hall of <span>Fame</span></h2>
+      <p class="section-subtitle">Every great car deserves a proper goodbye. These beauties have found their forever homes.</p>
+    </div>
+    <div class="gold-divider reveal"><div class="gold-divider-dot"></div></div>
+    <div class="hof-grid stagger-children" id="hofGrid">
+      <div class="hof-card"><div class="skeleton" style="width:100%;height:100%"></div></div>
+      <div class="hof-card"><div class="skeleton" style="width:100%;height:100%"></div></div>
+      <div class="hof-card"><div class="skeleton" style="width:100%;height:100%"></div></div>
+      <div class="hof-card"><div class="skeleton" style="width:100%;height:100%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="section" style="background:var(--bg-secondary); border-top:1px solid var(--border-color)">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Client Testimonials</span>
+      <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+    </div>
+    <div class="gold-divider reveal"><div class="gold-divider-dot"></div></div>
+    <div class="grid-3 stagger-children" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Got Questions?</span>
+      <h2 class="section-title">Frequently <span>Asked</span></h2>
+    </div>
+    <div style="max-width:760px; margin:0 auto">
+      <div class="faq-item reveal">
+        <button class="faq-question">How does the installment plan work?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">You pay a minimum of 40% deposit to lock in your vehicle. The remaining balance is spread over 12 to 60 months depending on your agreement. All plans are structured with transparent terms — no hidden charges. Contact us to get a personalised plan.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Do you offer nationwide delivery?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. We deliver to all 36 states in Nigeria. Whether you are in Lagos, Port Harcourt, Kano, or Maiduguri — your vehicle will be delivered safely to your location. Delivery timeline is typically 3–7 business days after full payment or deposit confirmation.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Are all cars duty paid?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Every vehicle in our inventory that is marked "Duty Paid" has been fully cleared through Nigerian Customs. We have dedicated customs specialists in our broker network to ensure a clean, legal process for every import.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Can I sell or swap my current car?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. Submit your vehicle details using our Sell/Swap form. Our team will evaluate your car within 24 hours and offer a fair market valuation. If you want to swap, the value of your car is applied as credit toward your new vehicle purchase.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">How do I book a test drive?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Use our online Test Drive Booking form to select your preferred vehicle, date, and time. Our team will confirm within a few hours. Test drives are conducted at our Abuja showroom on Olusegun Obasanjo Way, Central Business District.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">What if the exact car I want is not in stock?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">That is what our VIP Concierge service is for. Submit a Pre-Order request with the exact specifications you desire — brand, model, year, colour, trim level — and we will source it from any market worldwide. Timeline varies by vehicle and location.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question">Is there a referral program?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes! Sarkinmota Autos rewards loyalty. When you refer someone who successfully purchases a vehicle, you earn a referral bonus. Visit our Referral Program page or contact us on WhatsApp for full details on current bonus amounts.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REFERRAL STRIP ===== -->
+<section style="padding:0 0 var(--space-16)">
+  <div class="container">
+    <div class="referral-strip reveal">
+      <div class="referral-text">
+        <h3>💰 Earn Money by Referring</h3>
+        <p>Know someone who needs a car? Refer them to Sarkinmota Autos and earn a bonus when they buy.</p>
+      </div>
+      <a href="/pages/referral.html" class="btn btn-primary btn-lg">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP & CONTACT ===== -->
+<section class="map-section">
+  <div class="map-grid">
+    <div class="map-info">
+      <span class="section-eyebrow">Find Us</span>
+      <h2 class="section-title" style="text-align:left; font-size:var(--text-4xl)">Visit Our <span>Showroom</span></h2>
+      <div style="margin-top:var(--space-8); display:flex; flex-direction:column; gap:var(--space-5)">
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📍</div>
+          <div>
+            <div class="footer-contact-label">Address</div>
+            <div class="footer-contact-value">Olusegun Obasanjo Way, beside NNPC Mega Gas Station, Central Business District, Abuja</div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📞</div>
+          <div>
+            <div class="footer-contact-label">Phone / WhatsApp</div>
+            <div class="footer-contact-value"><a href="tel:07015136111">07015136111</a></div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">⏰</div>
+          <div>
+            <div class="footer-contact-label">Business Hours</div>
+            <div class="footer-contact-value">Mon – Sat: 9:00 AM – 6:00 PM<br>Sunday: By Appointment</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-8); display:flex; gap:var(--space-4); flex-wrap:wrap">
+        <a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp">WhatsApp Us</a>
+        <a href="/pages/contact.html" class="btn btn-outline">Send Message</a>
+      </div>
+    </div>
+    <iframe class="map-frame"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.817!2d7.491302!3d9.057580!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDMnMjcuMyJOIDfCsDI5JzI4LjciRQ!5e0!3m2!1sen!2sng!4v1"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Sarkinmota Autos Showroom Location">
+    </iframe>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner reveal">
+      <span class="section-eyebrow">Stay Updated</span>
+      <h2 class="section-title" style="font-size:var(--text-3xl)">New Arrivals in Your <span>Inbox</span></h2>
+      <p style="color:var(--text-secondary); margin-top:var(--space-3)">Be the first to know when exclusive vehicles land at Sarkinmota Autos.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" class="form-input" placeholder="Enter your email address" id="newsletterEmail" required>
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+      <p style="font-size:var(--text-xs); color:var(--text-muted); margin-top:var(--space-3)">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRESS ===== -->
+<section class="press-section">
+  <div class="container">
+    <p class="press-label">As featured in</p>
+    <div class="press-logos">
+      <span class="press-logo">Punch Nigeria</span>
+      <span class="press-logo">Portfolio Magazine</span>
+      <span class="press-logo">Guardian Nigeria</span>
+      <span class="press-logo">BusinessDay</span>
+      <span class="press-logo">Channels TV</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="/assets/images/logo/logo-dark.png" alt="Sarkinmota Autos" style="height:48px">
+          <div class="footer-logo-text">
+            <div class="footer-logo-main">Sarkinmota</div>
+            <div class="footer-logo-sub">Autos</div>
+          </div>
+        </div>
+        <p class="footer-tagline">"Every car has a story, and every deal is built on trust."</p>
+        <div class="footer-catchphrase">My Bratha!</div>
+        <div class="footer-socials">
+          <a href="https://instagram.com/sarkinmota_cars" target="_blank" class="social-link" title="Instagram">📸</a>
+          <a href="https://tiktok.com/@alamin_sarkinmota" target="_blank" class="social-link" title="TikTok">🎵</a>
+          <a href="https://facebook.com/sarkinmota" target="_blank" class="social-link" title="Facebook">👤</a>
+          <a href="https://twitter.com/SarkinMota_AMF" target="_blank" class="social-link" title="X/Twitter">🐦</a>
+          <a href="https://youtube.com/@SarkinMota-24" target="_blank" class="social-link" title="YouTube">▶️</a>
+          <a href="https://wa.me/2347015136111" target="_blank" class="social-link" title="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Inventory</h4>
+        <ul class="footer-links">
+          <li><a href="/pages/inventory.html?type=Executive" class="footer-link">Executive Class</a></li>
+          <li><a href="/pages/inventory.html?type=SUV" class="footer-link">Premium SUVs</a></li>
+          <li><a href="/pages/inventory.html?type=Sport" class="footer-link">Sport & Performance</a></li>
+          <li><a href="/pages/inventory.html?type=Electric" class="footer-link">Electric Vehicles</a></li>
+          <li><a href="/pages/inventory.html?type=Executive Bus" class="footer-link">Executive Buses</a></li>
+          <li><a href="/pages/inventory.html" class="footer-link">All Vehicles</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="/pages/booking.html" class="footer-link">Book Test Drive</a></li>
+          <li><a href="/pages/preorder.html" class="footer-link">Pre-Order a Car</a></li>
+          <li><a href="/pages/sell-swap.html" class="footer-link">Sell / Swap</a></li>
+          <li><a href="/pages/calculator.html" class="footer-link">Loan Calculator</a></li>
+          <li><a href="/pages/installment-plans.html" class="footer-link">Installment Plans</a></li>
+          <li><a href="/pages/brokers.html" class="footer-link">Brokers Network</a></li>
+          <li><a href="/pages/referral.html" class="footer-link">Referral Program</a></li>
+          <li><a href="/pages/delivery.html" class="footer-link">Nationwide Delivery</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Contact</h4>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📍</div>
+          <div>
+            <div class="footer-contact-label">Showroom</div>
+            <div class="footer-contact-value">Olusegun Obasanjo Way, CBD, Abuja</div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📞</div>
+          <div>
+            <div class="footer-contact-label">WhatsApp / Call</div>
+            <div class="footer-contact-value"><a href="tel:07015136111">07015136111</a></div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">✉️</div>
+          <div>
+            <div class="footer-contact-label">Email</div>
+            <div class="footer-contact-value"><a href="mailto:info@sarkinmotaautos.com">info@sarkinmotaautos.com</a></div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">⏰</div>
+          <div>
+            <div class="footer-contact-label">Hours</div>
+            <div class="footer-contact-value">Mon–Sat: 9AM–6PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 <span>Sarkinmota Autos</span>. All rights reserved. Built with ❤️ by <span>The Quantum Developer</span>.</p>
+      <div class="footer-bottom-links">
+        <a href="/pages/faq.html" class="footer-bottom-link">FAQ</a>
+        <a href="/pages/about.html" class="footer-bottom-link">About</a>
+        <a href="/pages/contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/2347015136111" class="whatsapp-fab" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.544 4.124 1.5 5.867L0 24l6.317-1.473A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.741.872.937-3.628-.234-.373A9.783 9.783 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818S21.818 6.579 21.818 12c0 5.421-4.397 9.818-9.818 9.818z"/></svg>
+</a>
+
+<!-- Scripts -->
+<script src="/js/theme.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/wishlist.js"></script>
+<script src="/js/currency.js"></script>
+<script src="/js/navbar.js"></script>
+<script src="/js/whatsapp.js"></script>
+<script src="/js/social-ticker.js"></script>
+<script src="/js/animations.js"></script>
+<script src="/js/pages/index.js"></script>
+</body>
+</html>

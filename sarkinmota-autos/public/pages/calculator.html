@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Calculator — Sarkinmota Autos</title>
+  <link rel="stylesheet" href="/css/root.css"><link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-10); align-items: start; }
+    .calc-panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-8); }
+    .calc-section-title { font-family: var(--font-display); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-gold); margin-bottom: var(--space-5); display: block; }
+    .slider-group { margin-bottom: var(--space-6); }
+    .slider-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-3); }
+    .slider-label { font-family: var(--font-display); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+    .slider-value { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 800; color: var(--text-gold); }
+    input[type="range"] { width: 100%; -webkit-appearance: none; height: 3px; background: var(--bg-secondary); border-radius: 2px; outline: none; cursor: pointer; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--gold-mid); border-radius: 2px; cursor: pointer; transition: transform var(--ease-fast); }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .tenure-options { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+    .tenure-btn { flex: 1; min-width: 60px; padding: var(--space-3); text-align: center; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--font-display); font-size: var(--text-sm); font-weight: 700; cursor: pointer; transition: all var(--ease-fast); color: var(--text-secondary); }
+    .tenure-btn.active, .tenure-btn:hover { background: var(--gold-gradient); color: #000; border-color: transparent; }
+    .result-block { background: var(--bg-secondary); border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-5); text-align: center; }
+    .result-label { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--space-2); }
+    .result-amount { font-family: var(--font-display); font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl)); font-weight: 900; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; }
+    .result-sub { font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-2); }
+    .breakdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-bottom: var(--space-6); }
+    .breakdown-item { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: var(--space-4); text-align: center; }
+    .breakdown-label { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--space-2); }
+    .breakdown-val { font-family: var(--font-display); font-size: var(--text-base); font-weight: 800; color: var(--text-primary); }
+    .chart-wrap { position: relative; width: 160px; margin: 0 auto var(--space-6); }
+    canvas#pieChart { display: block; }
+    .chart-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+    .chart-center-label { font-family: var(--font-display); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+    .chart-center-val { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 900; color: var(--text-gold); }
+    .amort-table-wrap { max-height: 300px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: var(--radius-sm); }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: var(--bg-secondary); font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); padding: var(--space-3) var(--space-4); text-align: left; position: sticky; top: 0; }
+    td { padding: var(--space-3) var(--space-4); font-size: var(--text-sm); border-top: 1px solid var(--divider); color: var(--text-secondary); }
+    tr:hover td { background: var(--bg-card-hover); }
+    .chart-legend { display: flex; gap: var(--space-6); justify-content: center; margin-bottom: var(--space-6); }
+    .legend-item { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-secondary); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    @media (max-width: 1024px) { .calc-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .breakdown-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+<div class="page-loader"><div class="loader-logo">SARKINMOTA</div><div class="loader-bar"><div class="loader-bar-fill"></div></div><div class="loader-text">Loading calculator...</div></div>
+<nav class="navbar" id="navbar">
+  <div class="container"><div class="navbar-inner">
+    <a href="/" class="navbar-logo"><img src="/assets/images/logo/logo-dark.png" alt="Sarkinmota Autos" style="height:40px"><div class="navbar-logo-text"><span class="navbar-logo-main">Sarkinmota</span><span class="navbar-logo-sub">Autos</span></div></a>
+    <nav class="navbar-nav"><a href="/" class="nav-link">Home</a><a href="/pages/inventory.html" class="nav-link">Inventory</a><a href="/pages/calculator.html" class="nav-link active">Calculator</a><a href="/pages/booking.html" class="nav-link">Test Drive</a><a href="/pages/contact.html" class="nav-link">Contact</a></nav>
+    <div class="navbar-actions"><button class="theme-toggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button><button class="btn btn-ghost btn-sm" data-currency-toggle>₦ NGN</button></div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/" class="mobile-nav-link">Home</a><a href="/pages/inventory.html" class="mobile-nav-link">Inventory</a><a href="/pages/calculator.html" class="mobile-nav-link">Calculator</a><a href="/pages/contact.html" class="mobile-nav-link">Contact</a><div class="mobile-menu-actions"><a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp btn-lg">WhatsApp Us</a><button class="btn btn-outline btn-lg theme-toggle">Theme</button></div></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">›</span><span>Loan Calculator</span></div>
+    <h1 class="page-hero-title">Loan <span>Calculator</span></h1>
+    <p class="page-hero-sub">Calculate your monthly payments. Own your dream car with a structured installment plan.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="calc-grid">
+      <!-- Inputs -->
+      <div class="calc-panel reveal-left">
+        <span class="calc-section-title">💰 Payment Details</span>
+
+        <div class="form-group" style="margin-bottom:var(--space-6)">
+          <label class="form-label">Quick pick from inventory</label>
+          <select class="form-select" id="carPicker">
+            <option value="">— Select a vehicle —</option>
+          </select>
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">Vehicle Price</span>
+            <span class="slider-value" id="priceDisplay">₦85,000,000</span>
+          </div>
+          <input type="range" id="priceSlider" min="5000000" max="800000000" step="1000000" value="85000000">
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:var(--space-2)"><span>₦5M</span><span>₦800M</span></div>
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">Down Payment</span>
+            <span class="slider-value" id="downDisplay">40%</span>
+          </div>
+          <input type="range" id="downSlider" min="10" max="90" step="5" value="40">
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:var(--space-2)"><span>10%</span><span>90%</span></div>
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">Interest Rate (p.a.)</span>
+            <span class="slider-value" id="rateDisplay">15%</span>
+          </div>
+          <input type="range" id="rateSlider" min="5" max="35" step="0.5" value="15">
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:var(--space-2)"><span>5%</span><span>35%</span></div>
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">Loan Tenure</span>
+            <span class="slider-value" id="tenureDisplay">24 Months</span>
+          </div>
+          <div class="tenure-options">
+            <button class="tenure-btn" data-months="12">12 mo</button>
+            <button class="tenure-btn active" data-months="24">24 mo</button>
+            <button class="tenure-btn" data-months="36">36 mo</button>
+            <button class="tenure-btn" data-months="48">48 mo</button>
+            <button class="tenure-btn" data-months="60">60 mo</button>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--divider)">
+          <div style="font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-3)">Summary</div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+            <div style="display:flex;justify-content:space-between;font-size:var(--text-sm)"><span style="color:var(--text-secondary)">Vehicle Price</span><span id="sumPrice" style="font-weight:600">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:var(--text-sm)"><span style="color:var(--text-secondary)">Down Payment</span><span id="sumDown" style="font-weight:600;color:var(--color-success)">—</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:var(--text-sm)"><span style="color:var(--text-secondary)">Loan Amount</span><span id="sumLoan" style="font-weight:600">—</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="reveal-right">
+        <div class="calc-panel" style="margin-bottom:var(--space-6)">
+          <span class="calc-section-title">📊 Your Results</span>
+          <div class="result-block">
+            <div class="result-label">Monthly Payment</div>
+            <div class="result-amount" id="monthlyResult">₦0</div>
+            <div class="result-sub" id="monthlySubtext">for 24 months</div>
+          </div>
+          <div class="breakdown-grid">
+            <div class="breakdown-item"><div class="breakdown-label">Total Repayment</div><div class="breakdown-val" id="totalRepay">—</div></div>
+            <div class="breakdown-item"><div class="breakdown-label">Total Interest</div><div class="breakdown-val" id="totalInterest">—</div></div>
+            <div class="breakdown-item"><div class="breakdown-label">Effective Rate</div><div class="breakdown-val" id="effectiveRate">—</div></div>
+          </div>
+
+          <!-- Pie chart -->
+          <div class="chart-wrap">
+            <canvas id="pieChart" width="160" height="160"></canvas>
+            <div class="chart-center"><div class="chart-center-label">Principal</div><div class="chart-center-val" id="chartCenterVal">—%</div></div>
+          </div>
+          <div class="chart-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#C9A84C"></div>Principal</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#333"></div>Interest</div>
+          </div>
+
+          <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+            <button class="btn btn-whatsapp btn-full" id="waSendBtn">Send to WhatsApp</button>
+            <a href="/pages/booking.html" class="btn btn-outline btn-full">Book Test Drive</a>
+          </div>
+        </div>
+
+        <!-- Amortization table -->
+        <div class="calc-panel">
+          <span class="calc-section-title">📋 Repayment Schedule</span>
+          <div class="amort-table-wrap">
+            <table>
+              <thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+              <tbody id="amortBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/2347015136111" class="whatsapp-fab" target="_blank" rel="noopener"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.544 4.124 1.5 5.867L0 24l6.317-1.473A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.741.872.937-3.628-.234-.373A9.783 9.783 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818S21.818 6.579 21.818 12c0 5.421-4.397 9.818-9.818 9.818z"/></svg></a>
+<script src="/js/theme.js"></script><script src="/js/utils.js"></script><script src="/js/wishlist.js"></script><script src="/js/currency.js"></script><script src="/js/navbar.js"></script><script src="/js/whatsapp.js"></script><script src="/js/animations.js"></script><script src="/js/pages/calculator.js"></script>
+</body></html>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "news_001",
+    "title": "Sarkinmota Autos Unveils Nigeria's First Xiaomi YU7 Ultra",
+    "slug": "sarkinmota-xiaomi-yu7-ultra-launch",
+    "category": "New Arrivals",
+    "excerpt": "Only 2 units available in the entire country. Sarkinmota Autos becomes the exclusive importer of the revolutionary Xiaomi YU7 Ultra electric SUV.",
+    "content": "Sarkinmota Autos has made history by becoming the first dealership in Nigeria to stock the Xiaomi YU7 Ultra. With only 2 units available in the entire country, this marks a defining moment for electric luxury in Nigeria.\n\nThe YU7 Ultra boasts 800km range, 673hp dual motor, and Xiaomi's HyperOS — a fully connected intelligent vehicle experience. Priced at ₦145 million, this is not just a car. It is a statement.\n\n'We are not just selling cars. We are bringing the future to Nigeria,' said Dr. Aliyu Mohammad, CEO of Sarkinmota Autos. 'The Xiaomi YU7 Ultra is proof that Nigeria deserves world-class technology.'\n\nContact us today before both units are gone.",
+    "image": "/assets/images/hero/news-yu7.jpg",
+    "author": "Sarkinmota Autos Team",
+    "date": "2025-01-15T00:00:00.000Z",
+    "featured": true
+  },
+  {
+    "id": "news_002",
+    "title": "The ₦790M Bulletproof Coaster: Inside Nigeria's Most Secure Vehicle",
+    "slug": "bulletproof-coaster-790m",
+    "category": "Featured",
+    "excerpt": "When security is not optional. We take you inside the armoured Toyota Coaster that has become the talk of the nation.",
+    "content": "Nigeria's most powerful individuals now have a new choice for executive transport. The armoured Toyota Coaster at Sarkinmota Autos carries a B6 ballistic rating — capable of withstanding military-grade rifle fire and grenade blasts.\n\nAt ₦790 million, this is the most expensive vehicle we have ever stocked. But for the clientele that needs it, no price is too high for peace of mind.\n\nThe vehicle features run-flat tyres, blast-proof flooring, emergency exit systems, a dedicated intercom, and a VIP interior that rivals any private jet cabin.\n\nThis is not a car. This is a mobile fortress.",
+    "image": "/assets/images/hero/news-coaster.jpg",
+    "author": "Sarkinmota Autos Team",
+    "date": "2025-01-14T00:00:00.000Z",
+    "featured": true
+  },
+  {
+    "id": "news_003",
+    "title": "How Sarkinmota Built Nigeria's Biggest Car Dealership on Social Media",
+    "slug": "sarkinmota-social-media-story",
+    "category": "Brand Story",
+    "excerpt": "From ₦50,000 commissions to ₦790M bulletproof buses — the incredible story of Dr. Aliyu Mohammad and how viral content changed everything.",
+    "content": "In 2019, a young man from Adamawa started brokering car deals in Abuja, earning between ₦50,000 to ₦150,000 per transaction. Today, he is Nigeria's most talked-about auto dealer with 1.6 million TikTok followers and a clientele that spans senators, celebrities, and corporate executives.\n\nThe turning point? COVID-19. While other businesses shut down, Aliyu Mohammad went all-in on social media — creating viral content that educated, entertained, and converted viewers into buyers.\n\n'Social media didn't just help my business. Social media IS my business,' he explains. 'My bratha — the content is the showroom.'\n\nToday, Sarkinmota Autos is building a world-class HQ in Abuja's Central Business District — a physical home for a brand that was born entirely online.",
+    "image": "/assets/images/hero/news-story.jpg",
+    "author": "Sarkinmota Autos Team",
+    "date": "2025-01-10T00:00:00.000Z",
+    "featured": false
+  }
+]

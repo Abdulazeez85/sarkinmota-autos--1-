@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* === CORE BRAND COLORS === */
+  --gold-light:     #E8C96A;
+  --gold-mid:       #C9A84C;
+  --gold-dark:      #9A7A30;
+  --gold-gradient:  linear-gradient(135deg, #C9A84C 0%, #E8C96A 50%, #C9A84C 100%);
+  --gold-gradient-h: linear-gradient(90deg, #C9A84C 0%, #E8C96A 100%);
+
+  /* === DARK THEME (default) === */
+  --bg-primary:     #0A0A0A;
+  --bg-secondary:   #111111;
+  --bg-card:        #161616;
+  --bg-card-hover:  #1E1E1E;
+  --bg-overlay:     rgba(10, 10, 10, 0.95);
+  --bg-glass:       rgba(22, 22, 22, 0.8);
+
+  --text-primary:   #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted:     #666666;
+  --text-gold:      #C9A84C;
+
+  --border-color:   rgba(201, 168, 76, 0.2);
+  --border-active:  rgba(201, 168, 76, 0.6);
+  --divider:        rgba(255, 255, 255, 0.06);
+
+  --shadow-gold:    0 0 30px rgba(201, 168, 76, 0.15);
+  --shadow-card:    0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-hover:   0 8px 40px rgba(0, 0, 0, 0.6);
+
+  /* === TYPOGRAPHY === */
+  --font-display:   'Barlow Condensed', sans-serif;
+  --font-body:      'Inter', sans-serif;
+
+  --text-xs:    0.75rem;
+  --text-sm:    0.875rem;
+  --text-base:  1rem;
+  --text-lg:    1.125rem;
+  --text-xl:    1.25rem;
+  --text-2xl:   1.5rem;
+  --text-3xl:   1.875rem;
+  --text-4xl:   2.25rem;
+  --text-5xl:   3rem;
+  --text-6xl:   3.75rem;
+  --text-7xl:   4.5rem;
+  --text-8xl:   6rem;
+
+  /* === SPACING === */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* === LAYOUT === */
+  --container-max:  1400px;
+  --container-pad:  clamp(1rem, 5vw, 3rem);
+  --radius-sm:      2px;
+  --radius-md:      4px;
+  --radius-lg:      6px;
+  --radius-full:    9999px;
+
+  /* === TRANSITIONS === */
+  --ease-fast:    0.15s ease;
+  --ease-normal:  0.25s ease;
+  --ease-slow:    0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring:  0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* === STATUS COLORS === */
+  --color-success:  #22C55E;
+  --color-warning:  #F59E0B;
+  --color-error:    #EF4444;
+  --color-info:     #3B82F6;
+
+  /* === BADGE COLORS === */
+  --badge-hot:      #EF4444;
+  --badge-new:      #22C55E;
+  --badge-last:     #F59E0B;
+  --badge-drop:     #3B82F6;
+  --badge-soon:     #8B5CF6;
+}
+
+/* === LIGHT THEME === */
+[data-theme="light"] {
+  --bg-primary:     #F8F6F0;
+  --bg-secondary:   #EFEFEA;
+  --bg-card:        #FFFFFF;
+  --bg-card-hover:  #F5F3EE;
+  --bg-overlay:     rgba(248, 246, 240, 0.97);
+  --bg-glass:       rgba(255, 255, 255, 0.85);
+
+  --text-primary:   #0A0A0A;
+  --text-secondary: #3A3A3A;
+  --text-muted:     #777777;
+  --text-gold:      #9A7A30;
+
+  --border-color:   rgba(154, 122, 48, 0.2);
+  --border-active:  rgba(154, 122, 48, 0.5);
+  --divider:        rgba(0, 0, 0, 0.06);
+
+  --shadow-gold:    0 0 30px rgba(154, 122, 48, 0.12);
+  --shadow-card:    0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover:   0 8px 40px rgba(0, 0, 0, 0.15);
+
+  --gold-gradient:  linear-gradient(135deg, #9A7A30 0%, #C9A84C 50%, #9A7A30 100%);
+  --gold-gradient-h: linear-gradient(90deg, #9A7A30 0%, #C9A84C 100%);
+}

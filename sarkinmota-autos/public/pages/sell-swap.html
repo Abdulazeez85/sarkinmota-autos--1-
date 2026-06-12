@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell or Swap Your Car — Sarkinmota Autos</title>
+  <link rel="stylesheet" href="/css/root.css"><link rel="stylesheet" href="/css/reset.css"><link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/navbar.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/animations.css"><link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+<div class="page-loader"><div class="loader-logo">SARKINMOTA</div><div class="loader-bar"><div class="loader-bar-fill"></div></div><div class="loader-text">Loading...</div></div>
+<nav class="navbar" id="navbar"><div class="container"><div class="navbar-inner"><a href="/" class="navbar-logo"><img src="/assets/images/logo/logo-dark.png" alt="" style="height:40px"><div class="navbar-logo-text"><span class="navbar-logo-main">Sarkinmota</span><span class="navbar-logo-sub">Autos</span></div></a><nav class="navbar-nav"><a href="/" class="nav-link">Home</a><a href="/pages/inventory.html" class="nav-link">Inventory</a><a href="/pages/sell-swap.html" class="nav-link active">Sell/Swap</a><a href="/pages/contact.html" class="nav-link">Contact</a></nav><div class="navbar-actions"><button class="theme-toggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button></div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div></div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/" class="mobile-nav-link">Home</a><a href="/pages/inventory.html" class="mobile-nav-link">Inventory</a><a href="/pages/sell-swap.html" class="mobile-nav-link">Sell/Swap</a><div class="mobile-menu-actions"><a href="https://wa.me/2347015136111" target="_blank" class="btn btn-whatsapp btn-lg">WhatsApp Us</a><button class="btn btn-outline btn-lg theme-toggle">Theme</button></div></div>
+<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">›</span><span>Sell / Swap</span></div><h1 class="page-hero-title">Sell or <span>Swap</span></h1><p class="page-hero-sub">Get the best value for your current vehicle. Fair evaluation within 24 hours.</p></div></section>
+<section class="section"><div class="container"><div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-12)" class="reveal">
+  <div>
+    <h2 class="section-title" style="text-align:left;font-size:var(--text-4xl);margin-bottom:var(--space-6)">Why <span>Sell to Us?</span></h2>
+    <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+      <div style="padding:var(--space-5);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);display:flex;gap:var(--space-4)"><span style="font-size:24px;flex-shrink:0">⚡</span><div><div style="font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-sm);margin-bottom:4px">Fast Evaluation</div><div style="font-size:var(--text-sm);color:var(--text-secondary)">We assess and respond within 24 hours of your submission.</div></div></div>
+      <div style="padding:var(--space-5);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);display:flex;gap:var(--space-4)"><span style="font-size:24px;flex-shrink:0">💰</span><div><div style="font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-sm);margin-bottom:4px">Fair Market Price</div><div style="font-size:var(--text-sm);color:var(--text-secondary)">We offer genuine market value, not a low-ball offer.</div></div></div>
+      <div style="padding:var(--space-5);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);display:flex;gap:var(--space-4)"><span style="font-size:24px;flex-shrink:0">🔄</span><div><div style="font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-sm);margin-bottom:4px">Swap Credit</div><div style="font-size:var(--text-sm);color:var(--text-secondary)">Your car's value is applied directly as credit toward your next purchase.</div></div></div>
+      <div style="padding:var(--space-5);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);display:flex;gap:var(--space-4)"><span style="font-size:24px;flex-shrink:0">📋</span><div><div style="font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-sm);margin-bottom:4px">Zero Hassle</div><div style="font-size:var(--text-sm);color:var(--text-secondary)">We handle all the paperwork and documentation for you.</div></div></div>
+    </div>
+  </div>
+  <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--space-8)">
+    <h3 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;text-transform:uppercase;margin-bottom:var(--space-6)">Your Vehicle Details</h3>
+    <form id="swapForm" style="display:flex;flex-direction:column;gap:var(--space-4)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+        <div class="form-group"><label class="form-label">Your Name *</label><input type="text" class="form-input" id="swName" required placeholder="Full name"></div>
+        <div class="form-group"><label class="form-label">Phone *</label><input type="tel" class="form-input" id="swPhone" required placeholder="08XXXXXXXXX"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="swEmail" placeholder="your@email.com"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+        <div class="form-group"><label class="form-label">Car Make *</label><input type="text" class="form-input" id="swMake" required placeholder="e.g. Toyota"></div>
+        <div class="form-group"><label class="form-label">Car Model</label><input type="text" class="form-input" id="swModel" placeholder="e.g. Land Cruiser"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+        <div class="form-group"><label class="form-label">Year</label><input type="number" class="form-input" id="swYear" placeholder="2020" min="1990" max="2025"></div>
+        <div class="form-group"><label class="form-label">Mileage</label><input type="text" class="form-input" id="swMileage" placeholder="e.g. 45,000 km"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Condition</label>
+        <select class="form-select" id="swCondition"><option>Excellent</option><option>Good</option><option>Fair</option><option>Needs Work</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Your Asking Price (₦)</label><input type="text" class="form-input" id="swPrice" placeholder="e.g. 25,000,000"></div>
+      <div class="form-group"><label class="form-label">Target Car (if swapping)</label><input type="text" class="form-input" id="swTarget" placeholder="What car do you want instead?"></div>
+      <div class="form-group"><label class="form-label">Additional Notes</label><textarea class="form-textarea" id="swNotes" placeholder="Any extra information about your vehicle..."></textarea></div>
+      <button type="submit" class="btn btn-primary btn-full btn-lg">Submit Sell / Swap Request</button>
+    </form>
+  </div>
+</div></div></section>
+<a href="https://wa.me/2347015136111" class="whatsapp-fab" target="_blank" rel="noopener"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.544 4.124 1.5 5.867L0 24l6.317-1.473A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.359-.214-3.741.872.937-3.628-.234-.373A9.783 9.783 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818S21.818 6.579 21.818 12c0 5.421-4.397 9.818-9.818 9.818z"/></svg></a>
+<script src="/js/theme.js"></script><script src="/js/utils.js"></script><script src="/js/wishlist.js"></script><script src="/js/currency.js"></script><script src="/js/navbar.js"></script><script src="/js/whatsapp.js"></script><script src="/js/animations.js"></script><script src="/js/pages/sell-swap.js"></script>
+</body></html>

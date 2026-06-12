@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Sarkinmota Admin</title>
+  <link rel="stylesheet" href="/admin/css/admin-root.css">
+  <link rel="stylesheet" href="/admin/css/admin-layout.css">
+  <link rel="stylesheet" href="/admin/css/admin-components.css">
+</head>
+<body>
+<div class="admin-wrapper">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo">
+      <img src="/assets/images/logo/logo-dark.png" alt="Sarkinmota" onerror="this.style.display='none'">
+      <div class="sidebar-logo-text"><div class="sidebar-logo-main">Sarkinmota</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-title">Main</div>
+      <a href="/admin/pages/dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span> Dashboard</a>
+      <a href="/" target="_blank" class="sidebar-link"><span class="sidebar-icon">🌐</span> View Website</a>
+
+      <div class="sidebar-section-title">Inventory</div>
+      <a href="/admin/pages/cars.html" class="sidebar-link"><span class="sidebar-icon">🚗</span> All Vehicles</a>
+      <a href="/admin/pages/add-car.html" class="sidebar-link"><span class="sidebar-icon">➕</span> Add Vehicle</a>
+
+      <div class="sidebar-section-title">Leads</div>
+      <a href="/admin/pages/bookings.html" class="sidebar-link"><span class="sidebar-icon">📅</span> Test Drive Bookings <span class="sidebar-badge" id="sbBookings" style="display:none">0</span></a>
+      <a href="/admin/pages/enquiries.html" class="sidebar-link"><span class="sidebar-icon">📩</span> Enquiries <span class="sidebar-badge" id="sbEnquiries" style="display:none">0</span></a>
+      <a href="/admin/pages/preorders.html" class="sidebar-link"><span class="sidebar-icon">📦</span> Pre-Orders</a>
+      <a href="/admin/pages/swaps.html" class="sidebar-link"><span class="sidebar-icon">🔄</span> Sell/Swap Requests</a>
+
+      <div class="sidebar-section-title">Content</div>
+      <a href="/admin/pages/news.html" class="sidebar-link"><span class="sidebar-icon">📰</span> News & Events</a>
+      <a href="/admin/pages/newsletter.html" class="sidebar-link"><span class="sidebar-icon">✉️</span> Newsletter</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">A</div>
+        <div><div class="sidebar-user-name admin-username">Admin</div><div class="sidebar-user-role">Super Admin</div></div>
+      </div>
+      <button class="sidebar-logout admin-logout-btn">🚪 Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="admin-hamburger"><span></span><span></span><span></span></button>
+        <span class="admin-topbar-title">Dashboard</span>
+      </div>
+      <div class="admin-topbar-actions">
+        <a href="/admin/pages/add-car.html" class="admin-topbar-btn admin-topbar-btn-primary">➕ Add Vehicle</a>
+        <a href="/" target="_blank" class="admin-topbar-btn admin-topbar-btn-ghost">🌐 View Site</a>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <!-- Stats -->
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card"><div class="stat-card-icon">🚗</div><div class="stat-card-label">Total Vehicles</div><div class="stat-card-value" id="statCars">—</div><div class="stat-card-sub" id="statCarsub">Loading...</div></div>
+        <div class="stat-card"><div class="stat-card-icon">📅</div><div class="stat-card-label">Test Drive Bookings</div><div class="stat-card-value" id="statBookings">—</div><div class="stat-card-sub" id="statBookingsSub">Loading...</div></div>
+        <div class="stat-card"><div class="stat-card-icon">📩</div><div class="stat-card-label">Total Enquiries</div><div class="stat-card-value" id="statEnquiries">—</div><div class="stat-card-sub" id="statEnqSub">Loading...</div></div>
+        <div class="stat-card"><div class="stat-card-icon">✉️</div><div class="stat-card-label">Newsletter Subscribers</div><div class="stat-card-value" id="statNews">—</div><div class="stat-card-sub">Total subscribers</div></div>
+        <div class="stat-card"><div class="stat-card-icon">👁️</div><div class="stat-card-label">Total Page Views</div><div class="stat-card-value" id="statViews">—</div><div class="stat-card-sub">Across all listings</div></div>
+        <div class="stat-card"><div class="stat-card-icon">📦</div><div class="stat-card-label">Pre-Orders</div><div class="stat-card-value" id="statPreorders">—</div><div class="stat-card-sub">Total requests</div></div>
+        <div class="stat-card"><div class="stat-card-icon">🔄</div><div class="stat-card-label">Swap Requests</div><div class="stat-card-value" id="statSwaps">—</div><div class="stat-card-sub" id="statSwapsSub">Loading...</div></div>
+        <div class="stat-card"><div class="stat-card-icon">✅</div><div class="stat-card-label">Vehicles Sold</div><div class="stat-card-value" id="statSold">—</div><div class="stat-card-sub">Hall of fame</div></div>
+      </div>
+
+      <!-- Charts row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div class="admin-table-wrap">
+          <div class="admin-table-header"><span class="admin-table-title">👁️ Most Viewed Cars</span></div>
+          <div style="padding:16px" id="mostViewed"><div style="text-align:center;padding:24px;color:var(--text-muted);font-size:13px">Loading...</div></div>
+        </div>
+        <div class="admin-table-wrap">
+          <div class="admin-table-header"><span class="admin-table-title">📩 Most Enquired Cars</span></div>
+          <div style="padding:16px" id="mostEnquired"><div style="text-align:center;padding:24px;color:var(--text-muted);font-size:13px">Loading...</div></div>
+        </div>
+      </div>
+
+      <!-- Recent bookings -->
+      <div class="admin-table-wrap" style="margin-bottom:20px">
+        <div class="admin-table-header">
+          <span class="admin-table-title">📅 Recent Bookings</span>
+          <a href="/admin/pages/bookings.html" class="action-btn action-btn-view">View All →</a>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="admin-table">
+            <thead><tr><th>Name</th><th>Phone</th><th>Vehicle</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="recentBookings"><tr><td colspan="6" class="table-empty">Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Recent enquiries -->
+      <div class="admin-table-wrap">
+        <div class="admin-table-header">
+          <span class="admin-table-title">📩 Recent Enquiries</span>
+          <a href="/admin/pages/enquiries.html" class="action-btn action-btn-view">View All →</a>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="admin-table">
+            <thead><tr><th>Name</th><th>Phone</th><th>Vehicle</th><th>Source</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="recentEnquiries"><tr><td colspan="6" class="table-empty">Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/admin/js/admin-auth.js"></script>
+<script src="/admin/js/admin-dashboard.js"></script>
+</body></html>

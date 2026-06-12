@@ -1,0 +1,62 @@
+[
+  {
+    "id": "rev_001",
+    "name": "Alhaji Musa Ibrahim",
+    "location": "Abuja, FCT",
+    "rating": 5,
+    "text": "I bought a Range Rover Sport from Sarkinmota last year. The process was smooth, the car was exactly as described, and delivery to my door was seamless. My bratha is the real deal.",
+    "car": "Range Rover Sport HSE",
+    "date": "2024-11-15T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "rev_002",
+    "name": "Mrs. Chioma Okafor",
+    "location": "Lagos, Nigeria",
+    "rating": 5,
+    "text": "Nationwide delivery really works! I was skeptical ordering a car from Abuja to Lagos but Sarkinmota made it happen. The Toyota Land Cruiser arrived in perfect condition. 10/10.",
+    "car": "Toyota Land Cruiser 300",
+    "date": "2024-12-03T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "rev_003",
+    "name": "Senator Bello Adamu",
+    "location": "Kano, Nigeria",
+    "rating": 5,
+    "text": "The armoured Coaster I purchased exceeded every expectation. The level of service and attention to detail is unmatched in Nigeria. This is what luxury should feel like.",
+    "car": "Bulletproof Toyota Coaster",
+    "date": "2025-01-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "rev_004",
+    "name": "Engr. Tunde Fashola",
+    "location": "Port Harcourt, Rivers",
+    "rating": 5,
+    "text": "Used the installment plan. 40% deposit and I drove home in a BMW 7 Series the same week. The process was transparent and no hidden charges. Sarkinmota is trustworthy.",
+    "car": "BMW 7 Series 740i",
+    "date": "2025-01-10T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "rev_005",
+    "name": "Hajiya Fatima Sule",
+    "location": "Kaduna, Nigeria",
+    "rating": 5,
+    "text": "Swapped my old Lexus for a brand new Mercedes C300. Fair valuation, professional team, and the new car is absolutely gorgeous. Will definitely come back for more.",
+    "car": "Mercedes-Benz C300",
+    "date": "2025-01-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "rev_006",
+    "name": "Dr. Kayode Adeyemi",
+    "location": "Ibadan, Oyo",
+    "rating": 5,
+    "text": "I watched his TikTok videos for months before trusting him with ₦145M. Best decision I ever made. The Xiaomi YU7 is insane and Sarkinmota delivered as promised.",
+    "car": "Xiaomi YU7 Ultra",
+    "date": "2025-01-22T00:00:00.000Z",
+    "verified": true
+  }
+]

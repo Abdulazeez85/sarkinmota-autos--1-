@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Vehicle — Sarkinmota Admin</title>
+  <link rel="stylesheet" href="/admin/css/admin-root.css">
+  <link rel="stylesheet" href="/admin/css/admin-layout.css">
+  <link rel="stylesheet" href="/admin/css/admin-components.css">
+</head>
+<body>
+<div class="admin-wrapper">
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo"><img src="/assets/images/logo/logo-dark.png" alt="" style="height:36px" onerror="this.style.display='none'"><div class="sidebar-logo-text"><div class="sidebar-logo-main">Sarkinmota</div><div class="sidebar-logo-sub">Admin Panel</div></div></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-title">Main</div>
+      <a href="/admin/pages/dashboard.html" class="sidebar-link"><span class="sidebar-icon">📊</span> Dashboard</a>
+      <a href="/" target="_blank" class="sidebar-link"><span class="sidebar-icon">🌐</span> View Website</a>
+      <div class="sidebar-section-title">Inventory</div>
+      <a href="/admin/pages/cars.html" class="sidebar-link"><span class="sidebar-icon">🚗</span> All Vehicles</a>
+      <a href="/admin/pages/add-car.html" class="sidebar-link active"><span class="sidebar-icon">➕</span> Add Vehicle</a>
+      <div class="sidebar-section-title">Leads</div>
+      <a href="/admin/pages/bookings.html" class="sidebar-link"><span class="sidebar-icon">📅</span> Bookings</a>
+      <a href="/admin/pages/enquiries.html" class="sidebar-link"><span class="sidebar-icon">📩</span> Enquiries</a>
+      <a href="/admin/pages/preorders.html" class="sidebar-link"><span class="sidebar-icon">📦</span> Pre-Orders</a>
+      <a href="/admin/pages/swaps.html" class="sidebar-link"><span class="sidebar-icon">🔄</span> Sell/Swap</a>
+      <div class="sidebar-section-title">Content</div>
+      <a href="/admin/pages/news.html" class="sidebar-link"><span class="sidebar-icon">📰</span> News</a>
+      <a href="/admin/pages/newsletter.html" class="sidebar-link"><span class="sidebar-icon">✉️</span> Newsletter</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user"><div class="sidebar-user-avatar">A</div><div><div class="sidebar-user-name admin-username">Admin</div><div class="sidebar-user-role">Super Admin</div></div></div>
+      <button class="sidebar-logout admin-logout-btn">🚪 Sign Out</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="admin-hamburger"><span></span><span></span><span></span></button>
+        <span class="admin-topbar-title" id="pageTitle">Add Vehicle</span>
+      </div>
+      <div class="admin-topbar-actions">
+        <a href="/admin/pages/cars.html" class="admin-topbar-btn admin-topbar-btn-ghost">← Back to Inventory</a>
+      </div>
+    </div>
+
+    <div class="admin-content">
+      <div id="alertEl"></div>
+      <form id="carForm">
+        <input type="hidden" id="carId">
+
+        <!-- Basic Info -->
+        <div class="admin-form-panel">
+          <div class="admin-form-title">🚗 Basic Information</div>
+          <div class="admin-form-grid">
+            <div class="form-group"><label class="form-label">Brand *</label><input type="text" class="form-input" id="cBrand" required placeholder="e.g. Mercedes-Benz"></div>
+            <div class="form-group"><label class="form-label">Model *</label><input type="text" class="form-input" id="cModel" required placeholder="e.g. C300"></div>
+            <div class="form-group"><label class="form-label">Name (Full) *</label><input type="text" class="form-input" id="cName" required placeholder="e.g. Mercedes-Benz C300"></div>
+            <div class="form-group"><label class="form-label">Year *</label><input type="number" class="form-input" id="cYear" required min="1990" max="2026" placeholder="2024"></div>
+            <div class="form-group"><label class="form-label">Price (₦) *</label><input type="number" class="form-input" id="cPriceNGN" required placeholder="85000000"></div>
+            <div class="form-group"><label class="form-label">Price (USD)</label><input type="number" class="form-input" id="cPriceUSD" placeholder="55000"></div>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="admin-form-panel">
+          <div class="admin-form-title">📋 Vehicle Details</div>
+          <div class="admin-form-grid-3">
+            <div class="form-group"><label class="form-label">Type *</label>
+              <select class="form-select" id="cType" required>
+                <option value="Executive">Executive Class</option><option value="SUV">Premium SUV</option>
+                <option value="Sport">Sport & Performance</option><option value="Electric">Electric</option>
+                <option value="Executive Bus">Executive Bus</option><option value="Pickup">Pickup</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Condition *</label>
+              <select class="form-select" id="cCondition" required>
+                <option value="Brand New">Brand New</option><option value="Foreign Used">Foreign Used</option><option value="Nigerian Used">Nigerian Used</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Fuel</label>
+              <select class="form-select" id="cFuel">
+                <option value="Petrol">Petrol</option><option value="Diesel">Diesel</option><option value="Electric">Electric</option><option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Transmission</label>
+              <select class="form-select" id="cTransmission">
+                <option value="Automatic">Automatic</option><option value="Manual">Manual</option><option value="Single-Speed">Single-Speed (EV)</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Mileage</label><input type="text" class="form-input" id="cMileage" placeholder="e.g. 12,000 km"></div>
+            <div class="form-group"><label class="form-label">Engine</label><input type="text" class="form-input" id="cEngine" placeholder="e.g. 2.0L Turbocharged"></div>
+            <div class="form-group"><label class="form-label">Seats</label><input type="number" class="form-input" id="cSeats" min="1" max="60" placeholder="5"></div>
+            <div class="form-group"><label class="form-label">Color</label><input type="text" class="form-input" id="cColor" placeholder="e.g. Obsidian Black"></div>
+            <div class="form-group"><label class="form-label">Status</label>
+              <select class="form-select" id="cStatus">
+                <option value="Available">Available</option><option value="Sold">Sold</option>
+                <option value="On Order">On Order</option><option value="Coming Soon">Coming Soon</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Badge</label>
+              <select class="form-select" id="cBadge">
+                <option value="">None</option><option value="Hot Deal">Hot Deal</option>
+                <option value="Just Arrived">Just Arrived</option><option value="Last Unit">Last Unit</option>
+                <option value="Price Drop">Price Drop</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;margin-top:16px;flex-wrap:wrap">
+            <label class="form-checkbox"><input type="checkbox" id="cDutyPaid" checked><span class="form-checkbox-label">Duty Paid</span></label>
+            <label class="form-checkbox"><input type="checkbox" id="cFeatured"><span class="form-checkbox-label">Featured on Homepage</span></label>
+            <label class="form-checkbox"><input type="checkbox" id="cCarOfMonth"><span class="form-checkbox-label">Car of the Month</span></label>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="admin-form-panel">
+          <div class="admin-form-title">📝 Description & Details</div>
+          <div class="form-group" style="margin-bottom:16px"><label class="form-label">Description</label><textarea class="form-textarea" id="cDescription" rows="4" placeholder="Write a compelling description of this vehicle..."></textarea></div>
+          <div class="admin-form-grid">
+            <div class="form-group"><label class="form-label">Features (comma-separated)</label><textarea class="form-textarea" id="cFeatures" rows="3" placeholder="Ambient Lighting, Wireless CarPlay, Panoramic Roof..."></textarea></div>
+            <div class="form-group"><label class="form-label">Specs (JSON format)</label><textarea class="form-textarea" id="cSpecs" rows="3" placeholder='{"horsepower":"255 hp","0_to_100":"5.9s"}'></textarea></div>
+          </div>
+        </div>
+
+        <!-- Images -->
+        <div class="admin-form-panel">
+          <div class="admin-form-title">🖼️ Images</div>
+          <div class="form-group">
+            <label class="form-label">Image URLs (one per line)</label>
+            <textarea class="form-textarea" id="cImages" rows="4" placeholder="/assets/images/cars/mercedes-c300.jpg&#10;https://example.com/image2.jpg"></textarea>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:6px">Enter image paths or URLs. First image will be the main photo.</div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap">
+          <a href="/admin/pages/cars.html" class="admin-btn admin-btn-ghost">Cancel</a>
+          <button type="submit" class="admin-btn admin-btn-primary" id="submitBtn">Save Vehicle</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+<script src="/admin/js/admin-auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const ok = await adminAuth.guard();
+  if (!ok) return;
+  const id = new URLSearchParams(window.location.search).get('id');
+  if (id) {
+    document.getElementById('pageTitle').textContent = 'Edit Vehicle';
+    document.title = 'Edit Vehicle — Sarkinmota Admin';
+    loadCarForEdit(id);
+  }
+  document.getElementById('carForm').addEventListener('submit', saveCar);
+});
+
+async function loadCarForEdit(id) {
+  try {
+    const car = await adminFetch(`/api/cars/${id}`);
+    document.getElementById('carId').value = car.id;
+    document.getElementById('cBrand').value = car.brand || '';
+    document.getElementById('cModel').value = car.model || '';
+    document.getElementById('cName').value = car.name || '';
+    document.getElementById('cYear').value = car.year || '';
+    document.getElementById('cPriceNGN').value = car.price_ngn || '';
+    document.getElementById('cPriceUSD').value = car.price_usd || '';
+    document.getElementById('cType').value = car.type || 'Executive';
+    document.getElementById('cCondition').value = car.condition || 'Brand New';
+    document.getElementById('cFuel').value = car.fuel || 'Petrol';
+    document.getElementById('cTransmission').value = car.transmission || 'Automatic';
+    document.getElementById('cMileage').value = car.mileage || '';
+    document.getElementById('cEngine').value = car.engine || '';
+    document.getElementById('cSeats').value = car.seats || '';
+    document.getElementById('cColor').value = car.color || '';
+    document.getElementById('cStatus').value = car.status || 'Available';
+    document.getElementById('cBadge').value = car.badge || '';
+    document.getElementById('cDutyPaid').checked = !!car.duty_paid;
+    document.getElementById('cFeatured').checked = !!car.featured;
+    document.getElementById('cCarOfMonth').checked = !!car.car_of_month;
+    document.getElementById('cDescription').value = car.description || '';
+    document.getElementById('cFeatures').value = (car.features || []).join(', ');
+    document.getElementById('cSpecs').value = car.specs ? JSON.stringify(car.specs, null, 2) : '';
+    document.getElementById('cImages').value = (car.images || []).join('\n');
+  } catch { adminToast('Could not load vehicle', 'error'); }
+}
+
+async function saveCar(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Saving...';
+  const alertEl = document.getElementById('alertEl');
+  const id = document.getElementById('carId').value;
+
+  let specs = {};
+  try { specs = JSON.parse(document.getElementById('cSpecs').value || '{}'); } catch {}
+
+  const payload = {
+    brand: document.getElementById('cBrand').value,
+    model: document.getElementById('cModel').value,
+    name: document.getElementById('cName').value,
+    year: parseInt(document.getElementById('cYear').value),
+    price_ngn: parseInt(document.getElementById('cPriceNGN').value),
+    price_usd: parseInt(document.getElementById('cPriceUSD').value) || 0,
+    type: document.getElementById('cType').value,
+    condition: document.getElementById('cCondition').value,
+    fuel: document.getElementById('cFuel').value,
+    transmission: document.getElementById('cTransmission').value,
+    mileage: document.getElementById('cMileage').value,
+    engine: document.getElementById('cEngine').value,
+    seats: parseInt(document.getElementById('cSeats').value) || 5,
+    color: document.getElementById('cColor').value,
+    status: document.getElementById('cStatus').value,
+    badge: document.getElementById('cBadge').value || null,
+    duty_paid: document.getElementById('cDutyPaid').checked,
+    featured: document.getElementById('cFeatured').checked,
+    car_of_month: document.getElementById('cCarOfMonth').checked,
+    description: document.getElementById('cDescription').value,
+    features: document.getElementById('cFeatures').value.split(',').map(f => f.trim()).filter(Boolean),
+    specs,
+    images: document.getElementById('cImages').value.split('\n').map(u => u.trim()).filter(Boolean),
+  };
+
+  try {
+    const url = id ? `/api/cars/${id}` : '/api/cars';
+    const method = id ? 'PUT' : 'POST';
+    const res = await adminFetch(url, { method, body: JSON.stringify(payload) });
+    if (res.success) {
+      alertEl.innerHTML = `<div class="admin-alert admin-alert-success">✅ Vehicle ${id ? 'updated' : 'added'} successfully!</div>`;
+      if (!id) document.getElementById('carForm').reset();
+      setTimeout(() => window.location.href = '/admin/pages/cars.html', 1500);
+    } else {
+      alertEl.innerHTML = `<div class="admin-alert admin-alert-error">❌ ${res.error || 'Failed to save vehicle'}</div>`;
+    }
+  } catch {
+    alertEl.innerHTML = `<div class="admin-alert admin-alert-error">❌ Server error. Please try again.</div>`;
+  } finally {
+    btn.disabled = false; btn.textContent = 'Save Vehicle';
+  }
+}
+</script>
+</body></html>
