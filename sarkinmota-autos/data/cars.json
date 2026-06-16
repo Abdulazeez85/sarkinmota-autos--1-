@@ -1,19 +1,19 @@
 [
   {
     "id": "car_001",
-    "name": "Mercedes-Benz C300",
-    "brand": "Mercedes-Benz",
-    "model": "C300",
-    "year": 2023,
+    "name": "BMW 330i",
+    "brand": "BMW",
+    "model": "BMW 330i",
+    "year": 2025,
     "price_ngn": 85000000,
     "price_usd": 55000,
     "type": "Executive",
-    "condition": "Foreign Used",
-    "mileage": "12,000 km",
+    "condition": "Brand New",
+    "mileage": "",
     "color": "Obsidian Black",
     "transmission": "Automatic",
     "fuel": "Petrol",
-    "engine": "2.0L Turbocharged",
+    "engine": "2.0L TwinPower Turbo Inline-4",
     "seats": 5,
     "duty_paid": true,
     "status": "Available",
@@ -21,27 +21,15 @@
     "featured": true,
     "car_of_month": true,
     "images": [
-      "/assets/images/cars/mercedes-c300.jpg"
+      "https://res.cloudinary.com/da7jzmy2g/image/upload/v1781593117/330I_dkcsrl.jpg",
+      "https://res.cloudinary.com/da7jzmy2g/image/upload/v1781593117/330I_I_wpmcza.jpg"
     ],
-    "description": "The 2023 Mercedes-Benz C300 is the pinnacle of executive luxury. AI-equipped with MBUX infotainment, adaptive cruise control, and a turbocharged engine that commands every road.",
+    "description": "The 2025 BMW 330i is a luxury sports sedan that blends performance, comfort, and advanced technology. Powered by a turbocharged 255-horsepower engine, it delivers quick acceleration, precise handling, and excellent fuel efficiency. With its premium interior, cutting-edge infotainment system, and refined driving dynamics, the 330i remains one of the benchmark vehicles in the compact luxury sedan segment, competing with the Mercedes-Benz C-Class and Audi A4.",
     "features": [
-      "MBUX AI System",
-      "Ambient Lighting",
-      "Wireless CarPlay",
-      "360° Camera",
-      "Heated Seats",
-      "Panoramic Roof",
-      "Adaptive Cruise",
-      "Lane Keep Assist"
+      "BMW Curved Display with digital instrument cluster\nBMW Operating System 8.5\nWireless Apple CarPlay & Android Auto\nNavigation system\nDual-zone automatic climate control\nLED headlights\nPanoramic camera and parking assistance (available)\nAdaptive cruise control (available)\nPremium Harman Kardon sound system (available)"
     ],
-    "specs": {
-      "horsepower": "255 hp",
-      "torque": "295 lb-ft",
-      "0_to_100": "5.9s",
-      "top_speed": "250 km/h",
-      "fuel_economy": "8.5L/100km"
-    },
-    "views": 2,
+    "specs": {},
+    "views": 3,
     "enquiries": 0,
     "date_added": "2025-01-10T00:00:00.000Z"
   },
