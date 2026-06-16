@@ -20,8 +20,12 @@
   /* Navbar */
   .navbar-nav { display: none; }
   .hamburger { display: flex; }
-  .navbar-actions .btn { display: none; }
+  .navbar-actions .btn,
+  .navbar-actions .navbar-icon-btn,
+  .navbar-actions .theme-toggle { display: none; }
+  .navbar-actions { gap: 0; }
 
+  
   /* Hero */
   .hero-content { padding: 100px 0 60px; }
   .hero-stats { gap: var(--space-6); }

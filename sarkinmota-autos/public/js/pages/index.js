@@ -97,12 +97,12 @@ async function loadReviews() {
     const res = await fetch('/api/news'); // reuse same pattern
     // Load reviews directly from data - since there's no dedicated endpoint, embed them
     const reviewData = [
-      { id: 1, name: 'Alhaji Musa Ibrahim', location: 'Abuja, FCT', rating: 5, text: 'I bought a Range Rover Sport from Sarkinmota last year. The process was smooth, the car was exactly as described, and delivery to my door was seamless. My bratha is the real deal.', car: 'Range Rover Sport HSE' },
-      { id: 2, name: 'Mrs. Chioma Okafor', location: 'Lagos, Nigeria', rating: 5, text: 'Nationwide delivery really works! I was skeptical ordering a car from Abuja to Lagos but Sarkinmota made it happen. The Toyota Land Cruiser arrived in perfect condition. 10/10.', car: 'Toyota Land Cruiser 300' },
-      { id: 3, name: 'Senator Bello Adamu', location: 'Kano, Nigeria', rating: 5, text: 'The armoured Coaster I purchased exceeded every expectation. The level of service and attention to detail is unmatched in Nigeria. This is what luxury should feel like.', car: 'Bulletproof Toyota Coaster' },
-      { id: 4, name: 'Engr. Tunde Fashola', location: 'Port Harcourt', rating: 5, text: 'Used the installment plan. 40% deposit and I drove home in a BMW 7 Series the same week. The process was transparent and no hidden charges. Sarkinmota is trustworthy.', car: 'BMW 7 Series 740i' },
-      { id: 5, name: 'Hajiya Fatima Sule', location: 'Kaduna, Nigeria', rating: 5, text: 'Swapped my old Lexus for a brand new Mercedes C300. Fair valuation, professional team, and the new car is absolutely gorgeous.', car: 'Mercedes-Benz C300' },
-      { id: 6, name: 'Dr. Kayode Adeyemi', location: 'Ibadan, Oyo', rating: 5, text: 'I watched his TikTok videos for months before trusting him with ₦145M. Best decision I ever made. The Xiaomi YU7 is insane and Sarkinmota delivered as promised.', car: 'Xiaomi YU7 Ultra' },
+      { id: 1, name: 'Abbass Tukur', location: 'Abuja, FCT', rating: 5, text: 'To be sincere, Sarkin Mota is one of the best car dealers there is in Nigeria. No delay when shipping your car, 100% insurance, and imagine getting a 40% deposit, no matter the price. So my bratha what\'re waiting for? Go and buy before you hear sold..', car: '' },
+      { id: 2, name: 'Aisha Lawan', location: 'Abuja, FCT', rating: 5, text: 'He is a kind man and also very generous, funny, energetic and always makes someone happy, gives the best cars with the best prices and is fair. Something I like very much about him is he always and must always give you something when you come, especially his delicious shawarmas, zobos and kunu tdayas. Thank you, Sarkin Mota', car: '' },
+      { id: 3, name: 'Praise Amaewhule', location: 'Abuja, FCT', rating: 5, text: 'One of the best dealer of car\'s in the holl of Africa 👌No. 1 🥂I most buy my first car from alamin_sarkinmota 🤲🙏', car: '' },
+      { id: 4, name: 'Khadija Ahmad Yerima', location: 'Abuja,FCT', rating: 5, text: 'I wish I always follow him on Instagram and if I were Rich I would have bought cars from him from your biggest fan I dream to see you someday inshallah.', car: '' },
+      { id: 5, name: 'Ibrahim Khalil Sayyid', location: 'Abuja, FCT', rating: 5, text: ' had an outstanding experience at Sarkin Mota Autos. From the moment I arrived, the professionalism and attention to detail were obvious. The team was welcoming, knowledgeable, and took the time to understand exactly what I was looking for without any pressure.What stood out most was the quality of the vehicles and the transparency throughout the process. Everything felt organized, trustworthy, and genuinely customer-focused. It’s not just a car dealership—it’s an experience that reflects class and excellence.I highly recommend Sarkin Mota Autos to anyone looking for premium vehicles and top-tier service. They’ve definitely set a high standard.Visit Sarkin Mota Autos today, buy your dream car, before you hear sold!.', car: '' },
+      { id: 6, name: 'Moshood Bello', location: 'Ibadan, Oyo', rating: 5, text: 'Much love and respect for sarkin sarkinMota Autos🤍🤍', car: 'Xiaomi YU7 Ultra' },
     ];
     const grid = document.getElementById('reviewsGrid');
     if (!grid) return;
@@ -110,14 +110,14 @@ async function loadReviews() {
       <div class="review-card">
         <div class="review-stars">${'★'.repeat(r.rating)}</div>
         <p class="review-text">"${r.text}"</p>
-        <div class="review-author">
+        <d class="review-author">
           <div class="review-avatar">${r.name.charAt(0)}</div>
           <div>
             <div class="review-name">${r.name}</div>
             <div class="review-location">📍 ${r.location}</div>
             <div class="review-car">🚗 ${r.car}</div>
           </div>
-        </div>
+        </d
       </div>`).join('');
     initReveal();
   } catch (e) {
