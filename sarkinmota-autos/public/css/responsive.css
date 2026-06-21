@@ -25,6 +25,35 @@
   .navbar-actions .theme-toggle { display: none; }
   .navbar-actions { gap: 0; }
 
+  .navbar {
+  width: 100%;
+  overflow: hidden;
+}
+.navbar .container {
+  width: 100%;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+.navbar-inner {
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.navbar-logo {
+  flex: 1;
+  min-width: 0;
+}
+.navbar-logo-main {
+  font-size: var(--text-base);
+  white-space: nowrap;
+}
+.navbar-logo-sub {
+  font-size: 9px;
+}
+.hamburger {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
   
   /* Hero */
   .hero-content { padding: 100px 0 60px; }
