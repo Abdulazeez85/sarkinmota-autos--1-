@@ -292,7 +292,7 @@
     "engine": "2.0L Turbocharged Inline-4",
     "seats": 5,
     "duty_paid": true,
-    "status": "Available",
+    "status": "Sold",
     "badge": "Just Arrived",
     "featured": true,
     "car_of_month": false,
@@ -305,7 +305,7 @@
       "Dual 12.3-inch digital displays\nLatest MBUX infotainment system\nWireless Apple CarPlay & Android Auto\nVoice control (\"Hey Mercedes\")\nAmbient interior lighting\nPower-adjustable heated front seats\nPanoramic sunroof (available)\nBurmester premium sound system (available)"
     ],
     "specs": {},
-    "views": 2,
+    "views": 3,
     "enquiries": 0,
     "date_added": "2024-12-20T00:00:00.000Z"
   }
