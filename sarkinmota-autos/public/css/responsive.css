@@ -14,74 +14,59 @@
 /* Large mobile: 768px */
 @media (max-width: 768px) {
   :root {
-    --container-pad: 1.25rem;
+    --container-pad: 1rem;
   }
 
-  /* Navbar */
-  .navbar-nav { display: none; }
-  .hamburger { display: flex; }
-  .navbar-actions .btn,
-  .navbar-actions .navbar-icon-btn,
-  .navbar-actions .theme-toggle { display: none; }
-  .navbar-actions { gap: 0; }
-
+  /* Navbar — complete mobile fix */
   .navbar {
-  width: 100%;
-  overflow: hidden;
-}
-.navbar .container {
-  width: 100%;
-  overflow: hidden;
-  padding: 0 1rem;
-}
-.navbar-inner {
-  width: 100%;
-  flex-wrap: nowrap;
-}
-.navbar-logo {
-  flex: 1;
-  min-width: 0;
-}
-.navbar-logo-main {
-  font-size: var(--text-base);
-  white-space: nowrap;
-}
-.navbar-logo-sub {
-  font-size: 9px;
-}
-.hamburger {
-  flex-shrink: 0;
-  margin-left: auto;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  .navbar .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    overflow: hidden;
+  }
+  .navbar-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    gap: 8px;
+  }
+  .navbar-logo {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .navbar-logo img {
+    height: 32px;
+  }
+  .navbar-logo-main {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .navbar-logo-sub {
+    font-size: 9px;
+  }
+  .navbar-nav { display: none; }
+  .navbar-actions {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: 8px;
+    position: relative;
+    right: 0;
+    z-index: 1001;
+  }
 }
 
-  
-  /* Hero */
-  .hero-content { padding: 100px 0 60px; }
-  .hero-stats { gap: var(--space-6); }
-  .hero-actions { flex-direction: column; }
-  .hero-actions .btn { width: 100%; text-align: center; }
-
-  /* Grids */
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-
-  /* Sections */
-  .section { padding: var(--space-16) 0; }
-  .section-lg { padding: var(--space-20) 0; }
-
-  /* Footer */
-  .footer-grid { grid-template-columns: 1fr; gap: var(--space-8); }
-  .footer-bottom { flex-direction: column; text-align: center; }
-
-  /* Cards */
-  .car-card-actions { opacity: 1; transform: translateX(0); }
-
-  /* Filter bar */
-  .filter-bar { flex-direction: column; }
-  .filter-group { width: 100%; }
-
-  /* WhatsApp FAB */
-  .whatsapp-fab { bottom: var(--space-5); right: var(--space-5); width: 52px; height: 52px; font-size: 22px; }
-}
 
 /* Mobile: 480px */
 @media (max-width: 480px) {

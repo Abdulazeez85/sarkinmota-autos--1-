@@ -22,6 +22,7 @@
   gap: var(--space-4);
   width: 100%;
   overflow: hidden;
+  min-width: 0;
 }
 .navbar-logo {
   display: flex;
